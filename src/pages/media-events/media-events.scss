@@ -1,0 +1,17 @@
+page-media-events {
+    .mediaEventsContent{
+        .eventsList{
+            p.dateClass{
+                color: #bf954a;
+                font-size: 12px;
+                line-height: 26px;
+                font-family: 'Lato-Bold';
+                span img{
+                    width: 16px;
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+}

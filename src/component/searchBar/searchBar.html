@@ -1,0 +1,21 @@
+<div class="searchDiv">
+    <ion-searchbar *ngIf="searchType == 'contactAgency'" placeholder="{{'findContactsAgency' | translate}}"></ion-searchbar>
+    <ion-searchbar *ngIf="searchType == 'general'" placeholder="{{'search' | translate}}" (ionInput)="getItems($event)" [(ngModel)]="searchData"></ion-searchbar>
+    <!-- <ion-searchbar placeholder="Find Contacts, Agencies" *ngIf="searchType == undefined" (click)="searchInGen()"></ion-searchbar>
+    <ion-searchbar placeholder="Find Contacts, Agencies" *ngIf="searchType == 'general'" (ionInput)="searchGen($event)"></ion-searchbar> -->
+    <button *ngIf="listType == btnHide">
+        <ion-icon name="md-options"></ion-icon> 
+        {{'advanced' | translate}} 
+        <ion-icon name="ios-arrow-down"></ion-icon>
+    </button>
+    <button *ngIf="listType == 'advanceBtn'" (click)="advanceSearch()">
+        <ion-icon name="md-options"></ion-icon> 
+        {{'advanced' | translate}}  
+        <ion-icon name="ios-arrow-down"></ion-icon>
+    </button>
+    <!-- <button *ngIf="listType == 'politics'" (click)="advancePolitics()">
+        <ion-icon name="md-options"></ion-icon> 
+        Advanced 
+        <ion-icon name="ios-arrow-down"></ion-icon>
+    </button> -->
+</div>

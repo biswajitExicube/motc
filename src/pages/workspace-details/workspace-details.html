@@ -1,0 +1,100 @@
+<ion-header dir="{{direction}}">
+    <ion-navbar>
+      <ion-title>
+        {{'ePortal' | translate}}
+        <img src="assets/imgs/logo_small.png" alt="Image">
+      </ion-title>
+    </ion-navbar>
+    <ion-toolbar>
+      <toolbar></toolbar>
+    </ion-toolbar>
+  </ion-header>
+  
+  
+  <ion-content class="workspaceDetailContent">
+    <ion-label class="labelHead">
+      <img src="assets/imgs/teamwork.png">
+      {{'workspace' | translate}}
+    </ion-label>
+    <ion-item class="inProgItem">
+      <div>
+        <h2>{{wsDetail.Title?wsDetail.Title:''}}</h2>
+        <h4><img src="assets/imgs/tick_green.png" alt="Image"> {{wsDetail.Status?wsDetail.Status:''}}</h4>
+        <!-- <p><img src="assets/imgs/calendar_G.png" alt="Image"> Start Date <span>{{wsDetail.Start?wsDetail.Start:'Date Not Defined'}}</span></p>
+        <p><img src="assets/imgs/calendar_G.png" alt="Image"> End Date <span>{{wsDetail.End?wsDetail.End:'Date Not Defined'}}</span></p> -->
+      </div>
+      <div item-right>
+        <button ion-button class="likingBtn" (click)="likingItem()">
+          <ion-icon name="md-heart-outline" *ngIf="!wsDetail.IsFavourite"></ion-icon>
+          <ion-icon name="md-heart" *ngIf="wsDetail.IsFavourite"></ion-icon>
+        </button>
+        <span class="imgSpan"><img src="{{wsDetail.Admin?wsDetail.Admin.PictureBase64String !=null ?wsDetail.Admin.PictureBase64String :'':''}}" alt="Image"></span>
+        <h2>{{wsDetail.Admin?wsDetail.Admin.EmployeeName:""}}</h2>
+        <h3>{{wsDetail.Admin?wsDetail.Admin.JobTitle:""}}</h3>
+        <span class="btnSpan">
+          <a *ngIf="skypeUser" [href]="wsDetail.customcreateSkype" class="callBtn"><img src="assets/imgs/callIcon.png"></a>
+          <button class="chatBtn" *ngIf="!skypeUser" (click)="noNumber('call')"><img src="assets/imgs/callIcon.png"></button>
+          <button class="chatBtn" *ngIf="!skypeUser" (click)="noNumber('chat')"><img src="assets/imgs/chatIcon.png"></button>
+          <a *ngIf="skypeUser" [href]="wsDetail.customSkypeChat" class="callBtn"><img src="assets/imgs/chatIcon.png"></a>
+        </span>
+      </div>
+    </ion-item>
+    <p class="workDesc">{{wsDetail.Description?wsDetail.Description:''}}</p>  
+      <ion-item class="btnItem" *ngIf="userData.workgroupUserType == 'member'">
+        <button class="regBtn" (click)="leaveGR()">{{'leaveGroup' | translate}}</button>
+        <!-- <button class="askBtn" (click)="joinGR()">{{'askJoin' | translate}}</button> -->
+      </ion-item>
+      <ion-item class="btnItem" *ngIf="userData.workgroupUserType == 'admin'">
+        <button class="regBtn" (click)="inviteMem(wsDetail)">{{'inviteMem' | translate}}</button>
+        <button class="askBtn" (click)="requestList(wsDetail)">{{'workspaceRequest' | translate}}</button>
+      </ion-item>
+      <ion-item class="btnItem" *ngIf="userData.workgroupUserType == 'notMember'">
+        <button class="regBtn" (click)="registerWorkspace()">{{'register' | translate}}</button>
+      </ion-item>
+  
+  
+  
+    <ion-grid class="workspaceGrid" *ngIf="userData.workgroupUserType != 'notMember'">
+      <ion-row>
+        <ion-col col-6>
+          <div class="gridDetails" (click)="goDocList()">
+            <img src="assets/imgs/filesIcon.png">
+            <span>{{'documents' | translate}}</span>
+          </div>
+        </ion-col>
+        <ion-col col-6>
+          <div class="gridDetails" (click)="goEvent()">
+            <img src="assets/imgs/eventsIcon.png">
+            <span>{{'Events' | translate}}</span>
+          </div>
+        </ion-col>
+        <ion-col col-6>
+          <div class="gridDetails" (click)="goFabContact(wsDetail.Members)">
+            <img src="assets/imgs/membersIcon.png">
+            <span>{{'members' | translate}}</span>
+          </div>
+        </ion-col>
+        <ion-col col-6>
+          <div class="gridDetails" (click)="goTask()">
+            <img src="assets/imgs/worksIcon.png">
+            <span>{{'myWork' | translate}}</span>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-label class="labelHead" *ngIf="userData.workgroupUserType != 'notMember'">
+      <img src="assets/imgs/keywordsIcon.png">
+      {{'keyword' | translate}}
+    </ion-label>
+    <ion-list no-lines>
+      <ion-item class="categoryItem" *ngIf="userData.workgroupUserType !== 'notMember'">
+        <!-- <button *ngFor="let keyBtn of wsDetail.Keywords" class="cateBtn" (click)="chooseCat(keyBtn)">{{keyBtn}}</button> -->
+        <button *ngFor="let keyBtn of wsDetail.Keywords" class="cateBtn">{{keyBtn}}</button>
+        <h3 style="text-align:center;"  *ngIf="wsDetail.Keywords?wsDetail.Keywords.length == 0 : ''">No Keywords!</h3>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  <ion-footer>
+      <tab type="home" *ngIf="fromHome"></tab>
+      <tab type="any" *ngIf="!fromHome"></tab>
+  </ion-footer>

@@ -1,0 +1,43 @@
+<ion-header dir="{{direction}}">
+  <ion-navbar>
+    <!-- <button ion-button class="hamburgerBtn" (click)="openMenu()">
+      <ion-icon name="menu"></ion-icon>
+    </button> -->
+    <ion-title>
+      {{'ePortal' | translate}}
+      <img src="assets/imgs/logo_small.png" alt="Image">
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <toolbar></toolbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="WREventContent">
+    <!-- <searchbar search="general"></searchbar> -->
+    <ion-label class="labelHead">
+      <img src="assets/imgs/teamwork.png">
+      {{'Workspace Event' | translate}}
+    </ion-label>
+    <ion-list no-lines class="WREventDescList">
+        <ion-item class="workEventItem" *ngFor="let event of workEventsData; let i=index" (click)="goDetail(event)">
+            <h5 class="infoLabel">
+                <p><span><img src="assets/imgs/calendar_Y.png" alt="Image"> {{event.newsDate}}</span> | <span>{{event.newsTime}}</span></p>
+                <button ion-button (click)="likingItem()">
+                  <ion-icon name="{{event.IsFavourite==true? 'md-heart' : 'md-heart-outline'}}"></ion-icon>
+                </button>
+            </h5>
+            
+            <h2>{{event.Title}}</h2>
+            <p class="locationP"><span><ion-icon name="md-pin"></ion-icon> Location</span></p>
+            <h4 [innerHTML]="event.Description"></h4>
+        </ion-item>
+    </ion-list>
+
+</ion-content>
+
+<ion-footer>
+  <tab type="home" *ngIf="!showEle"></tab>
+  <tab type="any" *ngIf="showEle"></tab>
+</ion-footer>

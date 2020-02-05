@@ -1,0 +1,84 @@
+page-notification {
+    .notiContent{
+        .labelHead{
+            margin: 0px;
+            padding: 8px 16px;
+            border-top: 1px solid #dedede !important;
+            border-bottom: 1px solid #dedede !important;
+            color: #000;
+            text-transform: uppercase;
+            font-size: 16px;
+            img{
+                width: 20px;
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: 5px;
+            }
+        }
+        .notificationList{
+            ion-item{
+                box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.3);
+                width: 90%;
+                margin: 10px auto;
+                border-radius: 10px;
+                .item-inner{
+                    ion-label{
+                        white-space: normal;
+                        font-family: 'Lato-Bold';
+                        p{
+                            color: $themeColor2;
+                            font-size: 14px;
+                            span{
+                                display: inline-block;
+                            }
+                        }
+                        h3{
+                            margin: 6px 0;
+                            font-size: 16px;
+                            color: rgba(0, 0, 0, 0.87);
+                            line-height: 24px;
+                            text-overflow: ellipsis;
+                            overflow: hidden;
+                            display: -webkit-box;
+                            -webkit-line-clamp: 4;
+                            -webkit-box-orient: vertical;
+                            a{
+                                color: $themeColor1;
+                                font-family: 'Lato-Regular';
+                            }
+                        }
+                        button{
+                            background: none;
+                            color: $themeColor2;
+                            padding: 0px 2px;
+                            font-size: 14px;
+                            float: right;
+                            font-family: 'Lato-Bold';
+                            span{
+                                background: $themeColor2;
+                                width: 15px;
+                                height: 15px;
+                                border-radius: 50%;
+                                display: inline-block;
+                                vertical-align: middle;
+                                margin-left: 3px;
+                                line-height: 14px;
+                                text-align: center;
+                                color: #fff;
+                                ion-icon{
+                                    font-size: 11px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+ion-nav[dir="rtl"]{
+    page-notification .notiContent .labelHead img{
+        margin-right: 0px;
+        margin-left: 5px;
+    }
+}

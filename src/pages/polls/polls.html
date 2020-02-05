@@ -1,0 +1,110 @@
+<ion-header dir="{{direction}}">
+  <ion-navbar>
+    <button ion-button class="hamburgerBtn" (click)="openMenu()" *ngIf="fromMedia == undefined">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      {{'ePortal' | translate}}
+      <img src="assets/imgs/logo_small.png" alt="Image">
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <toolbar></toolbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="pollsContent">
+  <!-- <searchbar></searchbar> -->
+  <ion-label class="labelHead">
+    <img src="assets/imgs/poll_pink.png" alt="Image">
+    {{'Polls' | translate}}
+  </ion-label>
+  <ion-list no-lines class="pollList">
+    <ion-list-header>{{'pollHeading' | translate}}</ion-list-header>
+
+    <!--  Only 1 poll  showing in this section  -->
+    <div *ngFor="let currentpoll of pollingList; let i=index;">
+        <div class="currPoll" *ngIf="i==0">
+              <h3 (click)="pollDivExpand('currPoll')">{{currentpoll.Question}}</h3>
+              <div class="pollViewDiv" [ngClass]="isActive? 'showcurrentpoll' : ''">
+
+                    <ion-list class="radioGRList" radio-group [(ngModel)]="poll" (ionChange)="pollSelect($event)">
+                      <div *ngIf="i != buttonhideIndex">
+                          <ion-item *ngFor="let ans of currentpoll.AnswersArray; let j=index ">
+                              <ion-label >{{ans}} </ion-label>
+                              <ion-radio item-left value="{{ans}}"></ion-radio>
+                          </ion-item>
+                          <div class="btnDiv"  >
+                              <button ion-button outline  (click)="viewPollResult(currentpoll,i,'currentpoll')">{{'viewResult' | translate}}</button>
+                          </div>
+                      </div>
+                    </ion-list>
+
+                    <ion-list no-lines class="rangeList" [ngClass]="i == buttonhideIndex? 'showcurrentpoll' : ''">
+                        <div class="rangeDiv" *ngFor="let ans of pollResults">
+                            <span class="rangeDivHead">
+                                <ion-label>{{ans.name}}</ion-label>
+                                <ion-label>{{ans.percentage}} % -  {{'( '+ pollTotalVote + ' )'}} </ion-label>
+                            </span>            
+                            <ion-range disabled min="0" max="100"  snaps="true" color="secondary" [(ngModel)]="ans.value"></ion-range>
+                        </div>
+
+                        <div class="btnDiv">
+                            <button ion-button outline (click)="backPoll()">{{'back' | translate}}</button>
+                        </div>
+                    </ion-list>
+
+              </div>
+        </div>
+    </div>
+
+
+    <!--  More Polls  -->
+    <ion-label class="labelHead" style="margin-bottom: 20px;">
+      {{'morePolls' | translate}}
+    </ion-label>
+
+
+    <div *ngFor="let pollData of pollingList;let i=index;">
+        <div class="currPoll" *ngIf="i > 0">
+              <h3 (click)="pollDivExpand(i)">{{pollData.Question}}</h3>
+              <div class="pollViewDiv" [ngClass]="i ==show ? 'showcurrentpoll':''">
+                    
+                    <ion-list class="radioGRList" radio-group [(ngModel)]="poll" (ionChange)="pollSelect($event)">
+                      <div *ngIf="i != oldpollshownGroup">
+                          <ion-item *ngFor="let ans of pollData.AnswersArray">
+                              <ion-label>{{ans}}</ion-label>
+                              <ion-radio item-left  value="{{ans}}"></ion-radio>
+                          </ion-item>
+  
+                          <div class="btnDiv">
+                              <button ion-button outline (click)="viewPollResult(pollData,i,'oldpoll')">{{'viewResult' | translate}}</button>
+                          </div>
+                      </div>  
+
+                    </ion-list>
+
+                    <ion-list no-lines class="rangeList" [ngClass]="i == oldpollshownGroup? 'showcurrentpoll' : ''">
+                        <div class="rangeDiv" *ngFor="let ans of pollResults">
+                          <span class="rangeDivHead">
+                              <ion-label>{{ans.name}}</ion-label>
+                              <ion-label>{{ans.percentage}} % -  {{'( '+ pollTotalVote + ' )'}} </ion-label>
+                          </span>            
+                          <ion-range disabled min="0" max="100"  snaps="true" color="secondary" [(ngModel)]="ans.value"></ion-range>
+                      </div>
+
+                        <div class="btnDiv" >
+                              <button ion-button outline (click)="backPollOld()">{{'back' | translate}}</button>
+                        </div>
+                    </ion-list>
+              </div>
+        </div>
+    </div>
+
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <tab type="mediaCenter" *ngIf="fromMedia != undefined"></tab>
+  <tab type="any" *ngIf="fromMedia == undefined"></tab>
+</ion-footer>

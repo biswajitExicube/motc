@@ -1,0 +1,223 @@
+<ion-header dir="{{direction}}">
+  <ion-navbar>
+    <button ion-button class="hamburgerBtn" (click)="openMenu()">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      {{'ePortal' | translate}}
+      <img src="assets/imgs/logo_small.png" alt="Image">
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <toolbar></toolbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="searchGenContent">
+  <ion-label class="labelHead">
+    <ion-icon name="search"></ion-icon>
+    {{'searchGen' | translate}}
+  </ion-label>
+  <searchbar type="advanceBtn" search="general" (advance)="advanceSearch()" [ngClass]="showList? 'showList' : ''" (searchInput)="searchDocument($event)"></searchbar>
+  
+  
+  
+  <ion-list no-lines class="dirList" *ngIf="showList">
+    <ion-item class="dirListItem"
+      *ngFor="let dir of directoryList; let i=index;" text-wrap
+      
+      [ngClass]="{active: isGroupShown(i)}">
+      <h3 (click)="toggleGroup(i,dir.value)" >
+        {{dir.title}}
+      </h3>
+    </ion-item>
+  </ion-list>
+  <span class="loadingText" *ngIf="showLoading">{{'genLoading'| translate}}</span>
+  <!-- <span class="loadingText" *ngIf="tempShowData?.length ==0">{{'noData'| translate}}</span> -->
+  <span *ngFor="let searchdata of tempShowData; let i=index;" class="aa" >
+      <ion-list class="newsList" no-lines *ngIf="searchdata.searchType=='news'" (click)="GotoIndividualPage(searchdata)">
+        <ion-item>
+          <ion-avatar item-left>
+            <img [src]="">
+          </ion-avatar>
+          <h2>{{searchdata.Title}}</h2>
+          <h3 [innerHtml]="searchdata.Descroption"></h3>
+          <p>
+            <span>
+              {{searchdata.newsDate}}</span> | <span>{{searchdata.newsTime}}</span>
+          </p>
+        </ion-item>
+      </ion-list>
+
+      <ion-list no-lines *ngIf="searchdata.searchType=='event'" class="eventsList" (click)="GotoIndividualPage(searchdata)">
+          <ion-item>
+            <ion-avatar item-left>
+              <img src="assets/imgs/empty_calendar_Y.png" alt="Image">
+              <p>20 Dec</p>
+            </ion-avatar>
+            <h2>{{searchdata.Title}}</h2>
+            <h3 [innerHTML]="searchdata.Descroption"></h3>
+            <!-- <p><span><ion-icon name="md-pin"></ion-icon> Location</span></p> -->
+            <p><span>{{searchdata.newsDate}}</span> | <span>{{searchdata.newsTime}}</span></p>
+          </ion-item>
+          
+        </ion-list>
+
+      <!-- <div *ngIf="searchdata.searchType=='event'" (click)="GotoIndividualPage(searchdata)">
+          <h2>{{searchdata.Title}}</h2>
+          <h3 [innerHTML]="searchdata.Descroption"></h3>
+          <p>
+            <span>{{searchdata.newsDate}}</span> | <span>{{searchdata.newsTime}}</span>
+          </p>
+      </div> -->
+
+      <ion-list class="searchDocList" no-lines *ngIf="searchdata.searchType=='document'">
+        <ion-item>
+          <img item-left src="{{searchdata.ExtensionImageUrl? searchdata.ExtensionImageUrl : 'assets/imgs/wordIcon.png'}}" alt="Icon">
+          <h2>{{searchdata.Title}}</h2>
+          <p>{{searchdata.newsDate}}</p>
+            <span item-right (click)="showHideDocument(i)">
+              <ion-icon
+                [ngClass]="{active: shownDocument == i}"                   
+                [name]="shownDocument == i ? 'ios-arrow-forward' : 'ios-arrow-back'">
+              </ion-icon>
+            </span>
+            <div class="connectDiv" *ngIf="shownDocument == i ">
+                <!-- <span (click)="forLike(dirItem)">
+                    <ion-icon name="{{dirItem.IsFavourite == false ? 'md-heart-outline' : 'md-heart'}}"></ion-icon>
+                </span> -->
+                <span (click)="forShare(searchdata)"><img src="assets/imgs/share_white.png"></span>
+                <span (click)="download(searchdata.Url)">
+                    <img src="assets/imgs/download_white.png">
+                </span>
+            </div>
+        </ion-item>            
+      </ion-list>  
+
+      <!-- <div *ngIf="searchdata.searchType=='document'">
+          <ion-list no-lines class="docList">
+              <ion-item>
+                  <img item-left src="{{searchdata.ExtensionImageUrl? searchdata.ExtensionImageUrl : 'assets/imgs/wordIcon.png'}}" alt="Icon">
+                  <h2>{{searchdata.Title}}</h2>
+                  <p>{{searchdata.newsDate}}</p>
+                  <span item-right (click)="showHideDocument(i)">
+                    <ion-icon
+                      [ngClass]="{active: shownDocument == i}"                   
+                      [name]="shownDocument == i ? 'ios-arrow-forward' : 'ios-arrow-back'">
+                    </ion-icon>
+                  </span>
+                  <div class="connectDiv" *ngIf="shownDocument == i ">
+                      <!-- <span (click)="forCall(dirItem)"><ion-icon name="md-heart"></ion-icon></span> --
+                      <span (click)="forchat(searchdata)"><img src="assets/imgs/share_white.png"></span>
+                      <span (click)="download(searchdata.Url)"><img src="assets/imgs/download_white.png"></span>
+                  </div>
+              </ion-item>            
+          </ion-list>      
+      </div> -->
+
+      <ion-list no-lines class="contList" *ngIf="searchdata.searchType=='contact'">
+          <ion-item>
+            <h2 (click)="GotoIndividualPage(searchdata)">{{searchdata.EmployeeName}}</h2>
+            <p (click)="GotoIndividualPage(searchdata)">{{searchdata.JobTitle}}</p>
+            <h4 (click)="GotoIndividualPage(searchdata)">{{searchdata.Department}}</h4>
+            <span item-right (click)="showHideContact(i)">
+              <img [src]="shownConnect == i ? 'assets/imgs/collapseIcon.png' : 'assets/imgs/expandMore.png'">
+            </span>
+            <div class="connectDiv" *ngIf="shownConnect == i ">
+                <a [href]="skypeUser"><img src="assets/imgs/callIcon_white.png"></a>
+                <span (click)="forchat(searchdata)"><img src="assets/imgs/chatIcon_white.png"></span>
+                <span (click)="forMail(searchdata)"><img src="assets/imgs/mailIcon_white.png"></span>
+                <span (click)="forDetails(searchdata)"><img src="assets/imgs/eyeIcon.png"></span>
+              </div>
+          </ion-item>
+        </ion-list>
+
+      <!-- <div *ngIf="searchdata.searchType=='contact'" >
+        <h2 (click)="GotoIndividualPage(searchdata)">{{searchdata.EmployeeName}}</h2>
+        <p  (click)="GotoIndividualPage(searchdata)">{{searchdata.JobTitle}}</p>
+        <h4 (click)="GotoIndividualPage(searchdata)">{{searchdata.Department}}</h4>
+        <span item-right (click)="showHideContact(i)">
+          <img [src]="shownConnect == i ? 'assets/imgs/collapseIcon.png' : 'assets/imgs/expandMore.png'">
+        </span>
+        <div class="connectDiv" *ngIf="shownConnect == i ">
+            <a [href]="skypeUser"><img src="assets/imgs/callIcon_white.png"></a>
+            <span (click)="forchat(searchdata)"><img src="assets/imgs/chatIcon_white.png"></span>
+            <span (click)="forMail(searchdata)"><img src="assets/imgs/mailIcon_white.png"></span>
+            <span (click)="forDetails(searchdata)"><img src="assets/imgs/eyeIcon.png"></span>
+        </div>
+      </div> -->
+
+      <!-- <div *ngIf="searchdata.searchType=='poll'" (click)="GotoIndividualPage(searchdata)">
+        <h3>No poll configure</h3>
+      </div> -->
+
+      <ion-list no-lines class="surveyList" *ngIf="searchdata.searchType=='survey'" (click)="GotoIndividualPage(searchdata)">
+        <ion-item (click)="details(survey)">
+          <h2>{{currLang == 'en' ? 
+              searchdata.TitleEnglish ?searchdata.TitleEnglish : 'Title english not found'
+              : 
+              searchdata.TitleArabic ? searchdata.TitleArabic :'Title Arabic not found'}}</h2>
+          <p>
+              <span><img src="assets/imgs/total_survey_Y.png"></span>
+              <!-- <span class="survDate">{{searchdata.EndDate.RFCDateTime ? searchdata.EndDate.RFCDateTime.substring(0,16) : 'no time found'}}</span> -->
+          </p>
+        </ion-item>
+      </ion-list>
+
+      <!-- <div *ngIf="searchdata.searchType=='survey'" (click)="GotoIndividualPage(searchdata)">
+          <ion-item >
+              <h2>{{currLang == 'en' ? 
+                  searchdata.TitleEnglish ?searchdata.TitleEnglish : 'Title english not found'
+                  : 
+                  searchdata.TitleArabic ? searchdata.TitleArabic :'Title Arabic not found'}}</h2>
+              <p>
+                  <span><img src="assets/imgs/total_survey_Y.png"></span>
+                  <!-- <span class="survDate">{{searchdata.EndDate.RFCDateTime ? searchdata.EndDate.RFCDateTime.substring(0,16) : 'no time found'}}</span> --
+              </p>
+          </ion-item>
+      </div> -->
+      <div class="workspaceSearchDiv" *ngIf="searchdata.searchType=='workspace'" (click)="GotoIndividualPage(searchdata)">
+        <ion-card class="workspaceCard">
+          <ion-card-content>
+            <div class="workGPDetail">
+              <span class="personIcon" *ngIf="searchdata.IsAdmin"><img src="assets/imgs/friendIcon_Y.png" alt="Image"></span>
+              <h3>{{searchdata.Title}}</h3>
+              <p>{{searchdata.Description}}</p>
+              <!-- <hr /> -->
+              <div class="missionDiv">
+                <p (click)="goMissions(searchdata)">
+                  <span><ion-icon name="clipboard"></ion-icon></span>{{searchdata.Tasks}} {{'mission' | translate}}
+                </p>
+                <button (click)="knowMore(searchdata)" color="themeColor2">{{'more' | translate}}<span><ion-icon name="md-arrow-round-forward"></ion-icon></span></button>
+              </div>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </div>
+
+      <!-- <div *ngIf="searchdata.searchType=='workspace'" (click)="GotoIndividualPage(searchdata)">
+          <ion-card>
+              <ion-card-content>
+                <!-- <div class="HScrollItem workGPDetail" *ngFor="let work of myworkGPList; let i=index"> --
+                  <span class="personIcon"><img src="assets/imgs/friendIcon_Y.png" alt="Image"></span>
+                  <h3>{{searchdata.Title}}</h3>
+                  <p>{{searchdata.Description}}</p>
+                  <div class="missionDiv">
+                    <p (click)="goMissions(searchdata)"><span><ion-icon name="clipboard"></ion-icon></span>{{searchdata.Tasks}} {{'mission' | translate}}</p>
+                    <button (click)="knowMore(searchdata)" color="themeColor2">{{'more' | translate}}<span><ion-icon name="md-arrow-round-forward"></ion-icon></span></button>
+                  </div>
+                <!-- </div> --
+               
+              </ion-card-content>
+            </ion-card>
+      </div> -->
+
+
+    </span>
+
+
+</ion-content>
+<ion-footer>
+  <tab type="any"></tab>
+</ion-footer>

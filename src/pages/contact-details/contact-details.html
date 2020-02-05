@@ -1,0 +1,94 @@
+<ion-header dir="{{direction}}">
+  <ion-navbar>
+    <!-- <button ion-button class="hamburgerBtn" (click)="openMenu()">
+      <ion-icon name="menu"></ion-icon>
+    </button> -->
+    <ion-title>
+      {{'ePortal' | translate}}
+      <img src="assets/imgs/logo_small.png" alt="Image">
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <toolbar></toolbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="contDetContent">
+  <searchbar search="general"></searchbar>
+  <ion-label class="labelHead">
+    <ion-icon name="people"></ion-icon>
+    {{'Contact Details' | translate}}
+  </ion-label>
+  <div class="profInfoDiv">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-4>
+          <span class="profImage">
+            <!-- <img src="{{details.PictureBase64String? 'data:image/jpeg;base64,'+details.PictureBase64String : 'assets/imgs/profileImage.jpeg'}}" alt="Image"> -->
+            <img src="{{details.PictureBase64String? details.PictureBase64String : ''}}" alt="Image">
+          </span>
+          <h3>{{details.EmployeeName}}</h3>
+          <h4>{{details.JobTitle}}</h4>
+        </ion-col>
+        <ion-col col-8>
+          <div class="profInfoRight">
+            <button ion-button class="likingBtn" (click)="likingItem()">
+                <ion-icon name="md-heart-outline" ></ion-icon>
+              <!-- <ion-icon name="md-heart-outline" *ngIf="!eventLike"></ion-icon> -->
+              <!-- <ion-icon name="md-heart" *ngIf="eventLike"></ion-icon> -->
+              <span *ngIf="eventLike">{{'rmFav' | translate}}</span>
+              <span *ngIf="!eventLike">{{'addFav' | translate}}</span>
+            </button>
+            <!-- <span>
+              <ion-icon name="md-heart"></ion-icon>
+              {{'addFav' | translate}}
+            </span> -->
+            <span (click)="forMail()">
+              <ion-icon name="md-mail"></ion-icon>
+              {{'sendMail' | translate}}
+            </span>
+            <a [href]="details.customcreateSkype">
+              <ion-icon name="md-call"></ion-icon>
+              {{'call' | translate}}
+            </a>
+            <a [href]="details.customSkypeChat">
+              <ion-icon name="ios-chatbubbles"></ion-icon>
+              {{'sendMsg' | translate}}
+            </a>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <ion-list no-lines class="contactList">
+    <ion-item>
+      <p>{{'email' | translate}}</p>
+      <h3>{{details.eMail? details.eMail : '---'}}</h3>
+    </ion-item>
+    <ion-item>
+      <p>{{'mobPhn' | translate}}</p>
+      <h3>{{details.Mobile? details.Mobile : '---'}}</h3>
+    </ion-item>
+    <ion-item>
+      <p>{{'worktelephone' | translate}}</p>
+      <h3>{{details.OfficePhone? details.OfficePhone : '---'}}</h3>
+    </ion-item>
+    <ion-item>
+      <p>{{'workAddress' | translate}}</p>
+      <h3>{{details.Address1? details.Address1 : '---'}}</h3>
+    </ion-item>
+    <ion-item>
+      <p>{{'agency' | translate}}</p>
+      <h3>{{details.Agency? details.Agency : '---'}}</h3>
+    </ion-item>
+    <ion-item>
+      <p>{{'department' | translate}}</p>
+      <h3>{{details.Department? details.Department : '---'}}</h3>
+    </ion-item>
+    <h4>{{details.BioData}}</h4>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <tab type="home"></tab>
+</ion-footer>

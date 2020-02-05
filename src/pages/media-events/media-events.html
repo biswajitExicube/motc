@@ -1,0 +1,45 @@
+<ion-header dir="{{direction}}">
+  <ion-navbar>
+    <button ion-button class="hamburgerBtn" (click)="openMenu()" *ngIf="fromMedia == undefined">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      {{'ePortal' | translate}}
+      <img src="assets/imgs/logo_small.png" alt="Image">
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <toolbar></toolbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="mediaEventsContent">
+  <ion-list no-lines class="eventsList">
+    <ion-list-header>
+      <img src="assets/imgs/calendarPink.png" alt="Image">
+      {{'Events' | translate}}
+    </ion-list-header>
+    <searchbar type="btnHide" search="general" (searchInput)="searchEvents($event)"></searchbar>
+    <ion-item (click)="goDetail(event)" *ngFor="let event of eventsList; let i=index">
+      <ion-avatar item-left>
+        <img src="assets/imgs/empty_calendar_Y.png" alt="Image">
+        <p>20 Dec</p>
+      </ion-avatar>
+      <h2>{{event.Title}}</h2>
+      <h3 [innerHTML]="event.Descroption"></h3>
+      <!-- <p><span><ion-icon name="md-pin"></ion-icon> Location</span></p> -->
+      <p>
+        <span><ion-icon name="md-pin"></ion-icon> {{event.Venue}}</span>
+      </p>
+      <p class="dateClass">
+        <span><img src="assets/imgs/calendar_Y.png"> {{event.newsDate}} | {{event.newsTime}}</span>
+      </p>
+    </ion-item>
+    
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <tab type="mediaCenter" *ngIf="fromMedia != undefined"></tab>
+  <tab type="any" *ngIf="fromMedia == undefined"></tab>
+</ion-footer>

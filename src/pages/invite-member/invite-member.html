@@ -1,0 +1,45 @@
+<ion-header dir="{{direction}}">
+  <ion-navbar>
+    <!-- <button ion-button class="hamburgerBtn" (click)="openMenu()">
+      <ion-icon name="menu"></ion-icon>
+    </button> -->
+    <ion-title>
+      {{'ePortal' | translate}}
+      <img src="assets/imgs/logo_small.png" alt="Image">
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <toolbar></toolbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="inviteMemBerContent">
+
+  <ion-label class="labelHead" *ngIf = "hideButtons == true" >
+    <img src="assets/imgs/teamwork.png">
+    {{'inviteMem' | translate}}
+  </ion-label>
+  <ion-label class="labelHead" *ngIf = "hideButtons != true" >
+    <img src="assets/imgs/teamwork.png">
+    Member
+  </ion-label>
+
+  <!-- <ion-searchbar *ngIf = "hideButtons == true" search="general" (searchInput)="searchMember($event)"></ion-searchbar> -->
+  <ion-searchbar *ngIf="hideButtons==true"
+  [(ngModel)]="myInput"
+  (ionInput)="searchMember(myInput)">
+</ion-searchbar>
+  <ion-list no-lines class="memberList" *ngIf="showList">
+    <ion-item *ngFor="let member of membersList; let i=index">
+      <h2>
+        <span class="memName">{{member.EmployeeName}}</span>
+        <button *ngIf = "hideButtons == true" class="inviteBtn" (click)="inviteMem(member)">{{'invite' | translate}}</button>
+      </h2>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <tab type="home" *ngIf="show"></tab>
+  <tab type="any" *ngIf="sideMenu"></tab>
+</ion-footer>

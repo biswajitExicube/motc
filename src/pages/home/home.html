@@ -1,0 +1,86 @@
+<ion-header dir="{{direction}}">
+  <ion-navbar>
+    <button ion-button class="hamburgerBtn" (click)="openMenu()">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      {{'ePortal' | translate}}
+      <img src="assets/imgs/logo_small.png" alt="Image">
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <toolbar></toolbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="homeContent">
+  <ion-label class="micLabel" (click)="goAnnounce()">
+    <img src="assets/imgs/micIcon.png" alt="Image">
+    <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing</p> -->
+    <p>{{homeAnnouncementData?homeAnnouncementData.Descroption:''}}</p>
+    
+  </ion-label>
+  <searchbar search="contactAgency" type="advanceBtn" (advance)="advanceSearch()" (click)="gotoGeneralSearch()"></searchbar>
+  <!-- <div class="searchDiv">
+    <ion-searchbar placeholder="{{'findContactsAgency' | translate}}" (ionInput)="SearchData($event)"></ion-searchbar>
+    <button (click)="advanceSearch()">
+    <ion-icon name="md-options"></ion-icon> 
+    {{'advanced' | translate}} 
+    <ion-icon name="ios-arrow-down"></ion-icon>
+    </button>
+    </div> -->
+
+  
+
+
+  <ion-card class="HScrollCard favPersonCard">
+    <ion-card-header>
+      <img src="assets/imgs/favPeople.png">
+      {{'favContact' | translate}}
+    </ion-card-header>
+    <ion-card-content>
+      <div class="HScrollItem favPersonDetail" *ngFor="let person of favContactList; let i=index" (click)="favList()">
+        <span class="favPersonImage"><img src="{{person.PictureBase64String? person.PictureBase64String : ''}}"></span>
+        <h3>{{person.EmployeeName}}</h3>
+        <p>{{person.Department}}</p>
+      </div>
+      <h2 class="noDataItem" *ngIf="favContactList? favContactList.length == 0 : ''">{{'noData' | translate}}</h2>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Home Epic  -->
+  <ion-card class="HScrollCard workGPCard">
+    <ion-card-header>
+      <img src="assets/imgs/teamwork.png">
+      <span (click)="workGroup()">{{'workGroup' | translate}}</span>
+      <button class="addGroupBtn" (click)="addGroup()">{{'addNewGroup' | translate}} <span><ion-icon name="md-add"></ion-icon></span></button>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="HScrollItem workGPDetail" *ngFor="let work of WorkspacesList; let i=index">
+        <span class="personIcon" *ngIf="work.IsAdmin"><img src="assets/imgs/friendIcon_Y.png" alt="Image"></span>
+        <h3 (click)="gotoDetails(work)">{{work.Title}}</h3>
+        <p class="descP">{{work.Description}}</p>
+        <!-- <hr /> -->
+        <div class="missionDiv">
+          <p (click)="goMissions(work)"><span><ion-icon name="clipboard"></ion-icon></span>{{work.Tasks}} {{'mission' | translate}}</p>
+          <button (click)="gotoDetails(work)" color="themeColor2">{{'more' | translate}}<span><ion-icon name="md-arrow-round-forward"></ion-icon></span></button>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+<ion-footer>
+  <tab type="home"></tab>
+</ion-footer>
+
+<!-- 
+  <p>
+    <span>
+      <ion-icon name="md-calendar"></ion-icon> 
+      <ion-datetime displayFormat="DD MMM YYYY" placeholder="15 March 2015" [(ngModel)]="myDate"></ion-datetime>
+    </span> | 
+    <span>
+      <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" placeholder="09:00 AM"></ion-datetime>
+    </span>
+  </p>
+-->

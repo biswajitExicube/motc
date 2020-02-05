@@ -1,0 +1,91 @@
+page-my-task-details {
+    .taskDetailContent{
+        .labelHead{
+            margin: 0px;
+            padding: 8px 16px;
+            border-top: 1px solid #dedede !important;
+            border-bottom: 1px solid #dedede !important;
+            color: #000;
+            text-transform: uppercase;
+            font-size: 16px;
+            img{
+                width: 20px;
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: 5px;
+            }
+        }
+    }
+    .taskDetailList{
+        ion-item{
+            border-bottom: none !important;
+            box-shadow: none !important;
+            .item-inner{
+                ion-label{
+                    white-space: normal;
+                    &[stacked]{
+                        color: #848e98;
+                        text-transform: uppercase;
+                        font-size: 12px;
+                        font-family: 'Lato-Bold';
+                    }
+                    h2{
+                        font-family: 'Lato-Bold';
+                        font-size: 17px;
+                        line-height: 22px;
+                        color: rgba(0, 0, 0, 0.87);
+                    }
+                    p{
+                        font-size: 12px;
+                        line-height: 20px;
+                        margin: 6px 0px 0px 0px;
+                        img{
+                            width: 20px;
+                            display: inline-block;
+                            vertical-align: middle;
+                        }
+                        .dateSpan{                            
+                            span{
+                                color: $themeColor2;
+                            }
+                        }
+                    }
+                }
+                ion-input{
+                    input{
+                        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+                        line-height: 22px;
+                    }
+                }
+            }
+        }
+    }
+    ion-footer{
+        .btnDiv{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            position: fixed;
+            bottom: 16px;
+            width: 100%;
+            left: 0px;
+        }
+        button.nextBtn{
+            background: $themeColor2;
+            margin: 0px 6px;
+            font-size: 16px;
+            text-transform: uppercase;
+            color: #fff;
+            height: 42px;
+            z-index: 66;
+            width: 100%;
+            border-radius: 4px;
+        }
+    }
+}
+ion-nav[dir="rtl"]{
+    page-my-task-details .taskDetailContent .labelHead img{
+        margin-right: 0px;
+        margin-left: 5px;
+    }
+}

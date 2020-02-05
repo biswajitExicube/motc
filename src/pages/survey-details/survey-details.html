@@ -1,0 +1,94 @@
+<ion-header dir="{{direction}}">
+  <ion-navbar>
+    <!-- <button ion-button class="hamburgerBtn" (click)="openMenu()">
+      <ion-icon name="menu"></ion-icon>
+    </button> -->
+    <ion-title>
+      {{'ePortal' | translate}}
+      <img src="assets/imgs/logo_small.png" alt="Image">
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <toolbar></toolbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="surveyDContent">
+  <!-- <searchbar></searchbar> -->
+  <ion-label class="labelHead">
+    <img src="assets/imgs/survey_pink.png" alt="Image">
+    <span>{{'surveyDetail' | translate}}</span>
+  </ion-label>  
+  <ion-list no-lines class="detailList" *ngFor="let item of allSurveyQuestion; let i=index;">
+
+    <div class="detailDiv">
+      <h2>{{i+1+'. '}} {{item.InternalName ? item.InternalName : 'No Question internal name found'}}</h2>
+
+      <!-- For type == Choose -->
+      <div *ngIf="item.TypeAsString == 'Choice'">
+        <ion-list 
+        class="radioSList" radio-group (ionChange)="surveySelect($event, item.TypeAsString, i,null)">
+            <ion-item *ngFor = "let choiceItem of item.forChoice">
+                <ion-label>{{choiceItem._text}}</ion-label>
+                <ion-radio item-left  value="{{choiceItem._text}}"></ion-radio>
+            </ion-item>
+        </ion-list>
+    </div>
+
+      <!-- For type== multiple -->
+      <div *ngIf="item.TypeAsString == 'GridChoice'">
+        <ion-list 
+        *ngFor = "let choiceItem of item.forChoice; let x=index;" >
+            <ion-item>
+              <ion-label>{{choiceItem._text}}</ion-label>
+              <ion-checkbox value="choiceItem._text"  (ionChange)="surveySelect(choiceItem._text,item.TypeAsString, i,x)"></ion-checkbox>
+            </ion-item>
+        </ion-list>
+    </div>
+
+      <!-- normal -->
+      <ion-list *ngIf="item.TypeAsString == 'Number'">
+          <ion-item>
+            <ion-input style="border-bottom:1px solid #000;" placeholder="Answer" (ionChange)="surveySelect($event,item.TypeAsString, i,null)"></ion-input>
+          </ion-item>
+      </ion-list>
+
+
+
+
+
+    </div>
+
+
+    <!-- <div class="detailDiv">
+      <h2>2. Lorem ipsum dolor sit amet, consectetur elit adipiscing elit, sed do eiusmod tempor?</h2>
+      <ion-list class="radioSList" radio-group [(ngModel)]="surveyTwo" (ionChange)="surveySelect($event)">
+        <ion-item>
+          <ion-label>{{'yes' | translate}}</ion-label>
+          <ion-radio item-left  value="yes"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{'no' | translate}}</ion-label>
+          <ion-radio item-left value="no"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{'notSure' | translate}}</ion-label>
+          <ion-radio item-left value="notSure"></ion-radio>
+        </ion-item>
+      </ion-list>
+    </div>
+    <div class="detailDiv">
+      <h2>3. Lorem ipsum dolor sit amet, consectetur elit adipiscing elit, sed do eiusmod tempor?</h2>
+      <ion-item>
+        <ion-textarea [(ngModel)]="surveyThree" rows="5"></ion-textarea>
+      </ion-item>
+    </div> -->
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <button block class="nextBtn" type="button" (click)="surveySubmit()">{{'submit' | translate}}</button>
+</ion-footer>
+<!-- <ion-footer>
+  <tab type="mediaCenter"></tab>
+</ion-footer> -->

@@ -1,0 +1,37 @@
+<ion-header dir="{{direction}}">
+  <ion-navbar>
+    <button ion-button class="hamburgerBtn" (click)="openMenu()" *ngIf="!showEle">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      {{'ePortal' | translate}}
+      <img src="assets/imgs/logo_small.png" alt="Image">
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <toolbar></toolbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="feedbackContnet">
+  <ion-label class="labelHead">
+    <img src="assets/imgs/politics_pink.png">
+    {{'Feedback' | translate}}
+  </ion-label>
+  <ion-list no-lines class="feedsList">
+    <ion-item>
+      <ion-label stacked>{{'name' | translate}}</ion-label>
+      <ion-input placeholder="Please Enter your name here" [(ngModel)]="feedName"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>{{'description' | translate}}</ion-label>
+      <ion-textarea placeholder="Give Valuable feedback" rows="5" [(ngModel)]="feedComments"></ion-textarea>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <!-- <tab type="any" *ngIf="!showEle"></tab>
+  <tab type="mediaCenter" *ngIf="showEle"></tab> -->
+  <button block class="nextBtn" type="button" (click)="feedSubmit()">{{'submit' | translate}}</button>
+</ion-footer>

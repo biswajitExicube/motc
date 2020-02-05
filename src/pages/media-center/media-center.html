@@ -1,0 +1,43 @@
+<ion-header dir="{{direction}}">
+  <ion-navbar>
+    <button ion-button class="hamburgerBtn" (click)="openMenu()">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      {{'ePortal' | translate}}
+      <img src="assets/imgs/logo_small.png" alt="Image">
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <toolbar></toolbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="mediaCenterContent">
+  <!-- <searchbar></searchbar> -->
+  <ion-card class="mediaCard">
+    <ion-card-header>
+      <img src="assets/imgs/news.png">
+      {{'Media Center' | translate}}
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6 *ngFor="let media of mediaList; let i=index" (click)="mediaClick(media)">
+            <div class="mediaDiv">
+              <img src="{{media.image}}">
+              <span>
+                <h3>{{media.name | translate}}</h3>
+              </span>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<ion-footer>
+  <tab type="mediaCenter"></tab>
+</ion-footer>

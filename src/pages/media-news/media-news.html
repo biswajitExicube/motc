@@ -1,0 +1,42 @@
+<ion-header dir="{{direction}}">
+  <ion-navbar>
+    <button ion-button class="hamburgerBtn" (click)="openMenu()" *ngIf="fromMedia == undefined">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      {{'ePortal' | translate}}
+      <img src="assets/imgs/logo_small.png" alt="Image">
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <toolbar></toolbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="mediaNewsContent">
+  <ion-list no-lines class="newsList">
+    <ion-list-header>
+      <img src="assets/imgs/news.png" alt="Image">
+      {{'News' | translate}}
+    </ion-list-header>
+    <searchbar type="btnHide" search="general" (searchInput)="searchNews($event)"></searchbar>
+    <ion-item (click)="newsDetail(news.ID)" *ngFor="let news of newsData; let i=index;">
+      <ion-avatar item-left>
+        <!-- <img src="{{news.ImageUrl ? 'http://sp2016adv.westeurope.cloudapp.azure.com:2003/MOTCMobileservice.svc/GetImageBase64String?url='+ ImageUrl : ''}}" alt="Image"> -->
+        <img src="{{news.PictureBase64String? news.PictureBase64String : ''}}">
+      </ion-avatar>
+      <h2>{{news.Title}}</h2>
+      <h3 [innerHtml]="news.Descroption"></h3>
+      <p>
+        <span>
+          <!-- <ion-icon name="md-calendar"></ion-icon>  -->
+          {{news.newsDate}}</span> | <span>{{news.newsTime}}</span>
+      </p>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <tab type="mediaCenter" *ngIf="fromMedia != undefined"></tab>
+  <tab type="any" *ngIf="fromMedia == undefined"></tab>
+</ion-footer>

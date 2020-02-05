@@ -1,0 +1,36 @@
+<ion-header dir="{{direction}}">
+  <ion-navbar>
+    <button ion-button class="hamburgerBtn" (click)="openMenu()" *ngIf="!homeView && !mediaView">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      {{'ePortal' | translate}}
+      <img src="assets/imgs/logo_small.png" alt="Image">
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <toolbar></toolbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="announcementContent">
+    <ion-list no-lines class="announcementsList">
+      <ion-list-header>
+        <img src="assets/imgs/announceIcon_pink.png" alt="Image">
+        {{'Announcements' | translate}}
+      </ion-list-header>
+      <searchbar type="btnHide" search="general" (searchInput)="searchAnnounces($event)"></searchbar>
+      <ion-item *ngFor="let announc of announceList; let i=index;">
+        <!-- <p><span><ion-icon name="md-calendar"></ion-icon> {{announc.date}}</span> | <span>{{announc.time}}</span></p> -->
+        <h3 [innerHTML]="announc.Title"></h3>
+        <button (click)="goDetail(announc)">{{'more' | translate}}<span><ion-icon name="md-arrow-round-forward"></ion-icon></span></button>
+      </ion-item>
+    </ion-list>
+</ion-content>
+
+<ion-footer>
+  <tab type="mediaCenter" *ngIf="mediaView"></tab>
+  <tab type="home" *ngIf="homeView"></tab>
+  <tab type="any" *ngIf="!homeView && !mediaView"></tab>
+</ion-footer>

@@ -1,0 +1,212 @@
+page-workspace-request {
+    .workSpaceRequestContent{
+        .labelHead{
+            margin: 0px;
+            padding: 8px 16px;
+            border-top: 1px solid #dedede !important;
+            border-bottom: 1px solid #dedede !important;
+            color: #000;
+            text-transform: uppercase;
+            font-size: 16px;
+            img{
+                width: 20px;
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: 8px;
+            }
+        }
+        ion-searchbar{
+            width: 100%;
+            background: none;
+            border-bottom: 1px solid #dedede;
+            .searchbar-search-icon{
+                left: 10px;
+            }
+            .searchbar-clear-icon{
+                right: 4px;
+            }
+            input{
+                padding-left: 35px !important;
+                padding-right: 25px !important;
+                border-radius: 8px !important;
+                background: #dfdfe0 !important;
+                box-shadow: none !important;
+                font-family: 'Lato-Regular';
+            }
+        }
+        .requestList{
+            margin-top: 2px;
+            height: 53vh;
+            overflow: scroll;
+            margin-bottom: 26px;
+            ion-item{
+                border-bottom: 1px solid #dedede !important;
+                ion-checkbox[item-start]{
+                    position: relative;
+                    margin-right: 10px;
+                    .checkbox-icon{
+                        width: 18px;
+                        height: 18px;
+                        border-radius: 0px;
+                        border-width: 2px;
+                        border-radius: 2px;
+                        overflow: hidden;
+                    }
+                    .checkbox-icon.checkbox-checked{
+                        background: none;
+                        border-color: #787878;
+                        // &::before{
+                        //     background: url('../assets/imgs/checkBoxOn.png') no-repeat center center;
+                        //     background-size: 26px;
+                        //     width: 18px;
+                        //     height: 18px;
+                        //     z-index: 55;
+                        //     content: '';
+                        //     top: 0px;
+                        //     left: 0px;
+                        //     position: absolute;
+                        // }
+                        .checkbox-inner{
+                            display: none;
+                        }
+                    }
+                }
+                .checkbox.active{
+                    .checkbox-icon, .checkbox-icon.checkbox-checked{
+                        background: none;
+                        border: none;
+                        &::before{
+                            background: url('../assets/imgs/checkBoxOn.png') no-repeat center center;
+                            background-size: 26px;
+                            width: 18px;
+                            height: 18px;
+                            z-index: 55;
+                            content: '';
+                            top: 0px;
+                            left: 0px;
+                            position: absolute;
+                        }
+                        .checkbox-inner{
+                            display: none;
+                        }
+                    }
+                }
+                .item-inner{
+                    ion-label{
+                        font-family: 'Lato-Bold';
+                        white-space: normal;
+                        h2{
+                            font-size: 16px;
+                            line-height: 24px;
+                            color: rgba(0, 0, 0, 0.87);
+                        }
+                        h3{
+                            color: $themeColor2;
+                            font-size: 14px;
+                            line-height: 20px;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            span.date{
+                                color: #848e98;
+                                font-family: 'Lato-Regular';
+                            }
+                        }
+                    }
+                    > span[item-end]{
+                        button{
+                            width: 24px;
+                            height: 24px;
+                            margin: 0px;
+                            padding: 0px;
+                            background: none;
+                            box-shadow: none;
+                        }
+                    }
+                }
+            }
+        }
+        button.nextBtn{
+            background: $themeColor2;
+            margin: 0px 0px 10px 0px;
+            font-size: 18px;
+            text-transform: uppercase;
+            color: #fff;
+            height: 42px;
+            position: absolute;
+            bottom: 0px;
+            width: 100%;
+            left: 0px;
+            font-family: 'Lato-Bold';
+        }
+    }
+}
+ion-nav[dir="rtl"]{
+    page-workspace-request .workSpaceRequestContent .requestList ion-item ion-checkbox[item-start]{
+        margin-right: 4px;
+        margin-left: 10px;
+    }
+    ion-searchbar{
+        .searchbar-search-icon{
+            right: 10px;
+            left: initial;
+        }
+        .searchbar-clear-icon{
+            left: 4px;
+            right: initial;
+        }
+        input{
+            text-align: right;
+            padding-left: 25px !important;
+            padding-right: 35px !important;
+        }
+    }
+}
+@media screen 
+and (min-device-width : 414px) 
+and (min-device-height :   736px) 
+and (-webkit-device-pixel-ratio : 3) { // Iphone 8plus
+    page-workspace-request .workSpaceRequestContent .requestList{
+        height: 60vh;
+    }
+}
+@media screen 
+and (min-device-width : 414px) 
+and (min-device-height :   896px) 
+and (-webkit-device-pixel-ratio : 2) { // Iphone XR
+    page-workspace-request .workSpaceRequestContent .requestList{
+        height: 62vh;
+    }
+}
+@media screen 
+and (min-device-width : 375px) 
+and (min-device-height : 812px) 
+and (-webkit-device-pixel-ratio : 3) { // Iphone XS
+    page-workspace-request .workSpaceRequestContent .requestList{
+        height: 60vh;
+    }
+}
+
+@media screen 
+and (min-device-width : 414px) 
+and (min-device-height :   896px) 
+and (-webkit-device-pixel-ratio : 3) { // Iphone XS Max
+    page-workspace-request .workSpaceRequestContent .requestList{
+        height: 60vh;
+    }
+}
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-height : 667px){ // iphone 7
+    page-workspace-request .workSpaceRequestContent .requestList{
+        height: 56vh;
+    }
+}
+@media only screen 
+and (min-device-width: 360px) 
+and (max-device-height: 640px) 
+and (-webkit-device-pixel-ratio: 2) { // MotoG
+    page-workspace-request .workSpaceRequestContent .requestList{
+        height: 47vh;
+    }
+}

@@ -1,0 +1,222 @@
+page-polls {
+    .pollsContent{
+        .labelHead{
+            margin: 0px;
+            padding: 8px 16px;
+            border-top: 1px solid #dedede !important;
+            border-bottom: 1px solid #dedede !important;
+            color: #000;
+            text-transform: uppercase;
+            font-size: 16px;
+            img{
+                width: 20px;
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: 5px;
+            }
+        }
+        ion-list.pollList{
+            margin-top: 2px;
+            ion-list-header{
+                margin-bottom: 0px;
+                border-top: none;
+                .item-inner{
+                    ion-label{
+                        color: #848e98;
+                        white-space: normal;
+                        font-size: 16px;
+                        text-overflow: initial;
+                    }
+                }                
+            }
+            .currPoll{
+                margin: 6px auto;
+                width: calc( 100% - 32px );
+                box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.3);
+                padding: 8px;
+                border-radius: 8px;
+                h3{
+                    color: rgba(0, 0, 0, 0.87);
+                    font-size: 16px;
+                    line-height: 24px;
+                    margin: 0px;
+                    font-family: 'Lato-Bold';
+                }
+                .btnDiv{
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    flex-direction: row;
+                    margin-top: 10px;
+                    button{
+                        width: 48%;
+                        margin: 0px 2%;
+                        color: $themeColor2;
+                        border-color: $themeColor2;
+                        border-radius: 0px;
+                        text-transform: uppercase;
+                        font-family: 'Lato-Bold';
+                    }
+                    button.activated{
+                        background: $themeColor2;
+                        color: #fff;
+                    }
+                }
+                .pollViewDiv{
+                    width: auto;
+                    position: relative;
+                    overflow: hidden;
+                    // padding-bottom: 20px;
+                    display: none;
+                    ion-list{
+                        position: relative;
+                        top: 0px;
+                        left: 0px;
+                    }
+                }
+                .pollViewDiv.showcurrentpoll{
+                    display: block;
+                    padding-bottom: 10px;
+                }
+                ion-list.radioGRList{
+                    margin-bottom: 0px;
+                    transition: all ease-in-out 0.3s;
+                    // display: none;
+                    ion-item{
+                        padding: 0px;                    
+                        ion-radio[item-left]{
+                            margin-right: 10px;
+                            .radio-icon{
+                                width: 22px;
+                                height: 22px;
+                                border: 2px solid #787878;
+                                border-radius: 50%;
+                                .radio-inner{
+                                    background: transparent;
+                                    width: 12px;
+                                    height: 12px;
+                                    top: 3px;
+                                    left: 3px;
+                                    border-radius: 50%;
+                                    border: none;
+                                }
+                            }
+                            .radio-icon.radio-checked{
+                                border-color: $themeColor2;
+                                .radio-inner{
+                                    background: $themeColor2;
+                                }
+                            }
+                        }
+                        .item-inner{
+                            padding: 0px;
+                            border-bottom: none !important;
+                            ion-label{
+                                color: #222;
+                                font-family: 'Lato-Bold';
+                                font-size: 14px;
+                                margin-right: 0px;
+                            }
+                        }
+                    }                    
+                }
+                .rangeList{
+                    position: absolute !important;
+                    // top: 0px;
+                    // left: 0px;
+                    left: 100% !important;
+                    z-index: 1;
+                    width: 100%;
+                    height: auto;
+                    background: #fff;
+                    margin: 8px 0px 0px 0px;
+                    transition: all ease-in-out 0.3s;
+                    .rangeDiv{
+                        .rangeDivHead{
+                            width: 100%;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            font-family: 'Lato-Bold';
+                            ion-label{
+                                margin: 0px;
+                            }
+                            ion-label:last-child{
+                                text-align: right;
+                            }
+                        }
+                        ion-range{
+                            padding: 0px;
+                            margin: 6px 0px;
+                            &.range-disabled{
+                                opacity: 1;
+                            }
+                            .range-slider{
+                                height: 15px;
+                                border: 1px solid $themeColor1;
+                                border-radius: 10px;
+                                .range-bar, .range-tick{
+                                    height: 13px;
+                                    border-radius: 10px;
+                                    width: auto;
+                                    top: 0px;
+                                    left: 0px;
+                                }
+                                .range-bar.range-bar-active, .range-tick.range-tick-active{
+                                    background: $themeColor1;
+                                    height: 13px;
+                                }
+                                .range-knob-handle{
+                                    // height: 18px;
+                                    // width: 18px;
+                                    // top: 0px;
+                                    // margin-top: 0px;
+                                    // margin-left: -5px;
+                                    display: none;
+                                    .range-knob{
+                                        // top: 0px;
+                                        // left: 0px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .btnDiv{
+                        justify-content: center;
+                        margin-bottom: 6px;
+                    }
+                }
+                .rangeList.showcurrentpoll{
+                    position: inherit !important;
+                    left: 0px !important;
+                    margin-top: 2px;
+                }                
+            }
+        }
+    }
+}
+ion-nav[dir="rtl"]{
+    page-polls .pollsContent .labelHead img{
+        margin-right: 0px;
+        margin-left: 5px;
+    }
+    page-polls .pollsContent ion-list.pollList .currPoll .rangeList .rangeDiv .rangeDivHead ion-label:last-child{
+        text-align: left;
+    }
+    page-polls .pollsContent ion-list.pollList .currPoll .rangeList{
+        left: 0px !important;
+        right: 100% !important;
+    }
+    page-polls .pollsContent ion-list.pollList .currPoll .rangeList.showcurrentpoll{
+        right: 0px !important;
+    }
+}
+
+@media only screen 
+and (min-device-width: 320px) 
+and (max-device-height: 568px) 
+and (-webkit-device-pixel-ratio: 2) { // Iphone 5s
+    page-polls .pollsContent ion-list.pollList .currPoll .btnDiv button{
+        font-size: 14px;
+    }
+}

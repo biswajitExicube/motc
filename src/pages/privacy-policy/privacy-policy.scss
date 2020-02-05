@@ -1,0 +1,27 @@
+page-privacy-policy {
+    .privacyPolicyContent{
+        .detailCard{
+            width: 100%;
+            margin: 0px auto;
+            border-radius: 0px;
+            box-shadow: none;
+            ion-card-header{
+                white-space: normal;
+                text-align: center;
+                padding: 8px 16px;
+                border-top: 1px solid #ccc;
+                color: $themeColor3;
+                font-weight: bold;
+            }
+            ion-card-content{
+                p{
+                    margin: 0px;
+                    padding: 0px;
+                    font-size: 14px;
+                    line-height: 24px;
+                    color: #000;
+                }
+            }
+        }
+    }
+}

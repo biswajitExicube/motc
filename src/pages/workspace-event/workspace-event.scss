@@ -1,0 +1,96 @@
+page-workspace-event {
+    .WREventContent{
+        .labelHead{
+            margin: 0px;
+            padding: 8px 16px;
+            border-top: 1px solid #dedede !important;
+            border-bottom: 1px solid #dedede !important;
+            color: #000;
+            text-transform: uppercase;
+            font-size: 16px;
+            img{
+                width: 20px;
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: 8px;
+            }
+        }
+        .infoLabel{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row;
+            margin: 0px;
+            font-family: 'Lato-Bold';
+            p{
+                color: $themeColor2;
+                font-size: 12px;
+                line-height: 26px;
+                margin: 0px;
+                span{
+                    display: inline-block;
+                    img{
+                        display: inline-block;
+                        vertical-align: middle;
+                        width: 16px;
+                    }
+                }
+            }
+            button{
+                background: none;
+                box-shadow: none;
+                border: none;
+                color: $themeColor1;
+                padding: 0px;
+                margin: 0px;
+                width: 26px;
+                height: 26px;
+                font-size: 22px;
+            }
+        }
+        ion-list.WREventDescList{
+            margin-top: 2px;
+            .workEventItem{
+                padding: 6px 16px;
+                border-bottom: 1px solid #dedede;
+                margin-bottom: 8px;
+                .item-inner{
+                    padding-right: 0px;
+                    ion-label{
+                        margin: 0px;
+                        h2{
+                            white-space: normal;
+                            font-size: 16px;
+                            line-height: 24px;
+                            font-family: 'Lato-Bold';
+                            color: #222;
+                            margin: 0px;
+                            height: 48px;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            -webkit-line-clamp: 2;
+                            -webkit-box-orient: vertical;
+                        }
+                        p.locationP{
+                            color: $themeColor1;
+                            font-size: 15px;
+                            font-family: 'Lato-Bold';
+                            margin: 6px 0px;
+                            span{
+                                ion-icon{
+                                    display: inline-block;
+                                    margin-right: 6px;
+                                }
+                            }
+                        }
+                        h4{
+                            white-space: normal;
+                            line-height: 24px;
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

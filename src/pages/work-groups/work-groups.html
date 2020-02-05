@@ -1,0 +1,80 @@
+<ion-header dir="{{direction}}">
+  <ion-navbar>
+    <button ion-button class="hamburgerBtn" (click)="openMenu()" *ngIf="show">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      {{'ePortal' | translate}}
+      <img src="assets/imgs/logo_small.png" alt="Image">
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <toolbar></toolbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="workGroupsContent">
+  <ion-card-header>
+    <img src="assets/imgs/teamwork.png">
+    <span>{{'workGroup' | translate}}</span>
+    <button class="addGroupBtn" (click)="addGroup()">{{'addNewGroup' | translate}} <span><ion-icon name="md-add"></ion-icon></span></button>
+  </ion-card-header>
+  <searchbar type="btnHide" search="general" (searchInput)="searchWorkspace($event)"></searchbar>
+  <div class="segmentBar">
+    <ion-segment [(ngModel)]="groupSegModel" color="primary" (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="myGroup">
+        {{'myWorkGroups' | translate}}
+      </ion-segment-button>
+      <ion-segment-button value="publicGroup">
+        {{'publicWorkGroups' | translate}}
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  <div class="innerContent">
+    <ion-slides (ionSlideDidChange)="onSlideChanged($event)" #loopSlider>
+      <ion-slide>
+        <ion-card>
+          <ion-card-content>
+            <!-- <div class="HScrollItem workGPDetail" *ngFor="let work of workGPList.Workspaces; let i=index"> -->
+            <div class="HScrollItem workGPDetail" *ngFor="let work of myworkGPList; let i=index">
+              <span class="personIcon" *ngIf="work.IsAdmin"><img src="assets/imgs/friendIcon_Y.png" alt="Image"></span>
+              <h3 (click)="knowMore(work)">{{work.Title}}</h3>
+              <p>{{work.Description}}</p>
+              <!-- <hr /> -->
+              <div class="missionDiv">
+                <p (click)="goMissions(work)"><span><ion-icon name="clipboard"></ion-icon></span>{{work.Tasks}} {{'mission' | translate}}</p>
+                <button (click)="knowMore(work)" color="themeColor2">{{'more' | translate}}<span><ion-icon name="md-arrow-round-forward"></ion-icon></span></button>
+              </div>
+            </div>
+           
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+      <ion-slide>
+        <ion-card>
+          <ion-card-content>
+            <!-- <div class="HScrollItem workGPDetail" *ngFor="let work of workGPList.Workspaces; let i=index"> -->
+            <div class="HScrollItem workGPDetail" *ngFor="let work of workGPList; let i=index">
+              <span class="personIcon" *ngIf="work.IsAdmin"><img src="assets/imgs/friendIcon_Y.png" alt="Image"></span>
+              <h3 (click)="knowMore(work)">{{work.Title}}</h3>
+              <p>{{work.Description}}</p>
+              <!-- <hr /> -->
+              <div class="missionDiv">
+                <p (click)="goMissions(work)"><span><ion-icon name="clipboard"></ion-icon></span>{{work.Tasks}} {{'mission' | translate}}</p>
+                <button (click)="knowMore(work)" color="themeColor2">{{'more' | translate}}<span><ion-icon name="md-arrow-round-forward"></ion-icon></span></button>
+              </div>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+  </div>
+  <!-- <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll> -->
+</ion-content>
+<ion-footer>
+  <tab type="any" *ngIf="show"></tab>
+  <tab type="home" *ngIf="!show"></tab>
+</ion-footer>

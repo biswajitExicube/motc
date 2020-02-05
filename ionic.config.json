@@ -1,0 +1,7 @@
+{
+  "name": "motc",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

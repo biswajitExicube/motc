@@ -1,0 +1,132 @@
+<div class="tabs" *ngIf="tabItem == 'home'">
+    <button class="tab active" (click)="home()">
+        <img src="assets/imgs/home_active.png" alt="Icon">
+        <p>{{'Home' | translate}}</p>
+    </button>
+    <button class="tab" (click)="EService()">
+        <img src="assets/imgs/eServ.png" alt="Icon">
+        <p>{{'Electronic Serv' | translate}}</p>
+    </button>
+    <button class="tab" (click)="mediaCenter()">
+        <img src="assets/imgs/mediaCenter.png" alt="Icon">
+        <p>{{'Media Center' | translate}}</p>
+    </button>
+    <button class="tab" (click)="knowledge()">
+        <img src="assets/imgs/knowledge.png" alt="Icon">
+        <p>{{'Knowledge' | translate}}</p>
+    </button>
+    <button class="tab" (click)="about()">
+        <img src="assets/imgs/about.png" alt="Icon">
+        <p>{{'about' | translate}}</p>
+    </button>
+</div>
+<div class="tabs" *ngIf="tabItem == 'EService'">
+    <button class="tab" (click)="home()">
+        <img src="assets/imgs/home.png" alt="Icon">
+        <p>{{'Home' | translate}}</p>
+    </button>
+    <button class="tab active" (click)="EService()">
+        <img src="assets/imgs/eServ_active.png" alt="Icon">
+        <p>{{'Electronic Serv' | translate}}</p>
+    </button>
+    <button class="tab" (click)="mediaCenter()">
+        <img src="assets/imgs/mediaCenter.png" alt="Icon">
+        <p>{{'Media Center' | translate}}</p>
+    </button>
+    <button class="tab" (click)="knowledge()">
+        <img src="assets/imgs/knowledge.png" alt="Icon">
+        <p>{{'Knowledge' | translate}}</p>
+    </button>
+    <button class="tab" (click)="about()">
+        <img src="assets/imgs/about.png" alt="Icon">
+        <p>{{'about' | translate}}</p>
+    </button>
+</div>
+<div class="tabs" *ngIf="tabItem == 'mediaCenter'">
+    <button class="tab" (click)="home()">
+        <img src="assets/imgs/home.png" alt="Icon">
+        <p>{{'Home' | translate}}</p>
+    </button>
+    <button class="tab" (click)="EService()">
+        <img src="assets/imgs/eServ.png" alt="Icon">
+        <p>{{'Electronic Serv' | translate}}</p>
+    </button>
+    <button class="tab active" (click)="mediaCenter()">
+        <img src="assets/imgs/mediaCenter_active.png" alt="Icon">
+        <p>{{'Media Center' | translate}}</p>
+    </button>
+    <button class="tab" (click)="knowledge()">
+        <img src="assets/imgs/knowledge.png" alt="Icon">
+        <p>{{'Knowledge' | translate}}</p>
+    </button>
+    <button class="tab" (click)="about()">
+        <img src="assets/imgs/about.png" alt="Icon">
+        <p>{{'about' | translate}}</p>
+    </button>
+</div>
+<div class="tabs" *ngIf="tabItem == 'knowledge'">
+    <button class="tab" (click)="home()">
+        <img src="assets/imgs/home.png" alt="Icon">
+        <p>{{'Home' | translate}}</p>
+    </button>
+    <button class="tab" (click)="EService()">
+        <img src="assets/imgs/eServ.png" alt="Icon">
+        <p>{{'Electronic Serv' | translate}}</p>
+    </button>
+    <button class="tab" (click)="mediaCenter()">
+        <img src="assets/imgs/mediaCenter.png" alt="Icon">
+        <p>{{'Media Center' | translate}}</p>
+    </button>
+    <button class="tab active" (click)="knowledge()">
+        <img src="assets/imgs/knowledge_active.png" alt="Icon">
+        <p>{{'Knowledge' | translate}}</p>
+    </button>
+    <button class="tab" (click)="about()">
+        <img src="assets/imgs/about.png" alt="Icon">
+        <p>{{'about' | translate}}</p>
+    </button>
+</div>
+<div class="tabs" *ngIf="tabItem == 'about'">
+    <button class="tab" (click)="home()">
+        <img src="assets/imgs/home.png" alt="Icon">
+        <p>{{'Home' | translate}}</p>
+    </button>
+    <button class="tab" (click)="EService()">
+        <img src="assets/imgs/eServ.png" alt="Icon">
+        <p>{{'Electronic Serv' | translate}}</p>
+    </button>
+    <button class="tab" (click)="mediaCenter()">
+        <img src="assets/imgs/mediaCenter.png" alt="Icon">
+        <p>{{'Media Center' | translate}}</p>
+    </button>
+    <button class="tab" (click)="knowledge()">
+        <img src="assets/imgs/knowledge.png" alt="Icon">
+        <p>{{'Knowledge' | translate}}</p>
+    </button>
+    <button class="tab active" (click)="about()">
+        <img src="assets/imgs/about_active.png" alt="Icon">
+        <p>{{'about' | translate}}</p>
+    </button>
+</div>
+<div class="tabs" *ngIf="tabItem == 'any'">
+    <button class="tab" (click)="home()">
+        <img src="assets/imgs/home.png" alt="Icon">
+        <p>{{'Home' | translate}}</p>
+    </button>
+    <button class="tab" (click)="EService()">
+        <img src="assets/imgs/eServ.png" alt="Icon">
+        <p>{{'Electronic Serv' | translate}}</p>
+    </button>
+    <button class="tab" (click)="mediaCenter()">
+        <img src="assets/imgs/mediaCenter.png" alt="Icon">
+        <p>{{'Media Center' | translate}}</p>
+    </button>
+    <button class="tab" (click)="knowledge()">
+        <img src="assets/imgs/knowledge.png" alt="Icon">
+        <p>{{'Knowledge' | translate}}</p>
+    </button>
+    <button class="tab" (click)="about()">
+        <img src="assets/imgs/about.png" alt="Icon">
+        <p>{{'about' | translate}}</p>
+    </button>
+</div>

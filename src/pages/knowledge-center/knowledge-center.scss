@@ -1,0 +1,330 @@
+page-knowledge-center {
+    .politComponent{
+        .labelHead{
+            margin: 0px;
+            padding: 8px 16px;
+            border-top: 1px solid #dedede !important;
+            border-bottom: 1px solid #dedede !important;
+            color: #000;
+            text-transform: uppercase;
+            font-size: 16px;
+            img{
+                width: 20px;
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: 5px;
+            }
+        }
+        searchbar{
+            .searchDiv{
+                border-bottom: 1px solid #dedede;
+            }
+        }
+        .showList{
+            .searchDiv{
+                button{
+                    ion-icon[name='ios-arrow-down']{
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+        }
+        ion-list.advpolList{
+            border-top: 1px solid #dedede !important;
+            position: absolute;
+            top: 99px;
+            left: 0px;
+            right: 0px;
+            z-index: 66;
+            width: calc( 100% - 20px );
+            margin: 0px auto;
+            box-shadow: 0px 3px 10px 3px rgba(0, 0, 0, 0.2);
+            border-bottom-left-radius: 6px;
+            border-bottom-right-radius: 6px;
+            overflow: hidden;
+            display: none;
+            ion-item.advListItem{
+                position: relative;
+                .item-inner{
+                    ion-label{
+                        margin-top: 8px;
+                        margin-bottom: 8px;
+                        h3{
+                            border: 1px solid #dedede;
+                            border-radius: 8px;
+                            margin: 0px;
+                            padding: 7px;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            flex-direction: row;
+                            color: #555;
+                            font-weight: 600;
+                            font-size: 14px;
+                            ion-icon{
+                                color: #666;
+                                font-size: 20px;
+                            }
+                        }
+                        ion-list{
+                            margin-top: 2px;
+                            margin-bottom: 0px;
+                            ion-item{
+                                border-bottom: 1px solid #dedede;
+                                overflow: hidden;
+                                .item-inner{
+                                    margin-left: 5px;
+                                }
+                                ion-icon[item-left]{
+                                    font-size: 40px;
+                                    color: $themeColor1;
+                                    margin-right: 8px;
+                                }
+                                ion-label{
+                                    h2{
+                                        font-weight: 600;
+                                        font-size: 16px;
+                                        margin: 0px;
+                                    }
+                                    p{
+                                        margin: 2px 0;
+                                        font-size: 14px;
+                                    }
+                                    h4{
+                                        font-size: 14px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        ion-list.advpolList.listOpen{
+            display: block;
+        }
+        ion-segment{
+            padding-bottom: 4px;
+            ion-segment-button{
+                border: none !important;
+                border-radius: 0px !important;
+                height: 44px !important;
+                color: #1d1d26 !important;
+                font-size: 14px !important;
+                line-height: 44px !important;
+                text-transform: initial !important;
+                // max-width: initial !important;
+                font-family: 'Lato-Bold';
+                max-width: 30% !important;
+                margin: 0px 0px 0px 2%;
+            }
+            ion-segment-button.segment-activated{
+                background: none !important;
+                border-bottom: 4px solid $themeColor2 !important;
+            }
+        }
+        ion-segment.segment-md{
+            padding-bottom: 0px;
+        }
+        .innerContent{
+            width: 100%;
+            height: 59vh;
+            overflow: scroll;
+            // margin-bottom: 50px;
+            ion-slides{
+                background: #fff;
+                padding: 0px;
+                width: 100%;
+                height: 100%;
+                ion-slide{
+                    display: block;
+                    vertical-align: top;
+                    overflow-y: scroll;
+                    ion-list{
+                        margin-top: 2px;
+                        margin-bottom: 0px;
+                        ion-item{
+                            border-bottom: 1px solid #dedede;
+                            // border-radius: 8px;
+                            overflow: hidden;
+                            .item-inner{
+                                margin-left: 5px;
+                                padding-right: 0px;
+                            }
+                            img[item-left]{
+                                width: 40px;
+                                margin-right: 8px;
+                            }
+                            span[item-right]{
+                                position: relative;
+                                z-index: 33;
+                                height: 100%;
+                                background: rgba(0, 0, 0, 0.7);
+                                margin-right: 0px;
+                                color: #fff;
+                                width: 24px;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                            }
+                            ion-label{
+                                white-space: normal;
+                                font-family: 'Lato-Bold';
+                                line-height: 24px;
+                                font-size: 16px;
+                                h2{
+                                    font-size: 16px;
+                                    margin: 0px;
+                                }
+                                p{
+                                    margin: 2px 0;
+                                    font-size: 14px;
+                                    float: right;
+                                    font-family: 'Lato-Regular';
+                                    color: #848e98;
+                                    margin-top: 6px;
+                                }
+                            }
+                        }
+                    }
+                    .connectDiv{
+                        width: calc( 100% - 24px );
+                        height: 100%;
+                        background: rgba(0, 0, 0, 0.7);
+                        position: absolute;
+                        z-index: 10;
+                        top: 0px;
+                        left: 0px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: row;
+                        text-align: center;
+                        transition: all ease-in-out 0.3s;
+                        span{
+                            border: 1px solid #fff;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            width: 4rem;
+                            height: 4rem;
+                            margin: 0px 6px;
+                            position: relative;
+                            z-index: 30;
+                            ion-icon{
+                                color: #fff;
+                                font-size: 30px;
+                            }
+                            img{
+                                width: 26px;
+                            }
+                        }
+                        span.uploadedSpan{
+                            position: relative;
+                            input{
+                                position: absolute;
+                                width: 100%;
+                                height: 100%;
+                                opacity: 0;
+                            }
+                        }
+                    }
+                }
+                .swiper-pagination{
+                    button{
+                        background: $themeColor1;
+                        opacity: 0.3;                        
+                    }
+                    button.swiper-pagination-bullet-active{
+                        background: $themeColor1;
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+}
+ion-nav[dir="rtl"]{
+    page-knowledge-center .politComponent .labelHead img{
+        margin-left: 5px;
+        margin-right: 0px;
+    }
+    page-knowledge-center .politComponent .innerContent ion-slides ion-slide ion-list ion-item img[item-left]{
+        margin-left: 8px;
+        margin-right: 0px;
+    }
+    page-knowledge-center .politComponent .innerContent ion-slides ion-slide ion-list ion-item span[item-right] ion-icon{
+        transform: rotate(180deg);
+    }
+    page-knowledge-center .politComponent .innerContent ion-slides ion-slide ion-list ion-item .item-inner{
+        margin-left: 0px;
+        margin-right: 5px;
+        padding-right: 8px !important;
+        padding-left: 0px !important;
+    }
+    page-knowledge-center .politComponent .innerContent ion-slides ion-slide ion-list ion-item span[item-right]{
+        margin-left: 0px;
+        margin-right: 8px;
+    }
+    page-knowledge-center .politComponent .innerContent ion-slides ion-slide .connectDiv{
+        right: 0px;
+    }
+}
+
+@media screen 
+and (min-device-width : 360px) 
+and (min-device-height :   640px) 
+and (-webkit-device-pixel-ratio : 2) { // Samsung on7
+    page-knowledge-center .politComponent .innerContent{
+        height: 54vh;
+    }
+}
+@media screen 
+and (min-device-width : 360px) 
+and (min-device-height :   640px) 
+and (-webkit-device-pixel-ratio : 3) { // Xperia z5
+    page-knowledge-center .politComponent .innerContent{
+        height: 54vh;
+    }
+}
+@media screen 
+and (min-device-width : 360px) 
+and (min-device-height :   767px) 
+and (-webkit-device-pixel-ratio : 1) { // Galaxy s9
+    page-knowledge-center .politComponent .innerContent{
+        height: 61vh;
+    }
+}
+@media screen 
+and (min-device-width : 414px) 
+and (min-device-height :   736px) 
+and (-webkit-device-pixel-ratio : 3) { // Iphone 8plus
+    page-knowledge-center .politComponent .innerContent{
+        height: 66vh;
+    }
+}
+@media screen 
+and (min-device-width : 414px) 
+and (min-device-height :   896px) 
+and (-webkit-device-pixel-ratio : 2) { // Iphone XR
+    page-knowledge-center .politComponent .innerContent{
+        height: 64vh;
+    }
+}
+@media screen 
+and (min-device-width : 375px) 
+and (min-device-height : 812px) 
+and (-webkit-device-pixel-ratio : 3) { // Iphone XS
+    page-knowledge-center .politComponent .innerContent{
+        height: 60vh;
+    }
+}
+
+@media screen 
+and (min-device-width : 414px) 
+and (min-device-height :   896px) 
+and (-webkit-device-pixel-ratio : 3) { // Iphone XS Max
+    page-knowledge-center .politComponent .innerContent{
+        height: 64vh;
+    }
+}

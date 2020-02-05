@@ -1,0 +1,34 @@
+<ion-header dir="{{direction}}">
+  <ion-navbar>
+    <!-- <button ion-button class="hamburgerBtn" (click)="openMenu()">
+      <ion-icon name="menu"></ion-icon>
+    </button> -->
+    <ion-title>
+      {{'ePortal' | translate}}
+      <img src="assets/imgs/logo_small.png" alt="Image">
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <toolbar></toolbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="WRChartContent">
+  <!-- <searchbar search="general"></searchbar> -->
+  <ion-label class="labelHead">
+    <img src="assets/imgs/teamwork.png">
+    {{'discussGroup' | translate}}
+  </ion-label>
+  <ion-list no-lines class="discussList">
+      <h2 *ngIf="WRChartList?.length == 0" style="text-align:center">No data found</h2>
+      <ion-item *ngFor="let workSpace of WRChartList; let i=index;">
+          <ion-icon item-left name="ios-people"></ion-icon>
+          <h2>{{workSpace.Title}}</h2>
+          <p>{{workSpace.Replies}} Replies</p>
+      </ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <tab type="home"></tab>
+</ion-footer>

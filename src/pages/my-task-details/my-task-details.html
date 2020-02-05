@@ -1,0 +1,45 @@
+<ion-header dir="{{direction}}">
+  <ion-navbar>
+    <!-- <button ion-button class="hamburgerBtn" (click)="openMenu()" *ngIf="fromMedia == undefined">
+      <ion-icon name="menu"></ion-icon>
+    </button> -->
+    <ion-title>
+      {{'ePortal' | translate}}
+      <img src="assets/imgs/logo_small.png" alt="Image">
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <toolbar></toolbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="taskDetailContent">
+  <ion-label class="labelHead">
+    <img src="assets/imgs/politics_pink.png">
+    {{'myTask' | translate}}
+  </ion-label>
+  <ion-list no-lines class="taskDetailList">
+    <ion-item>
+      <h2>{{taskDetail.Title}}</h2>
+      <p>
+        <span class="dateSpan">
+          <img src="assets/imgs/calendar_G.png" alt="Icon">
+          Due Date
+          <span>{{taskDetail.endDate}}</span>
+        </span>
+      </p>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>{{'completion' | translate}} %</ion-label>
+      <ion-input placeholder="{{taskDetail.Percentage}}" [(ngModel)]="completion"></ion-input>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <div class="btnDiv">
+    <button block class="nextBtn" type="button" (click)="cancel()">{{'cancel' | translate}}</button>
+    <button block class="nextBtn" type="button" (click)="saveTask()">{{'save' | translate}}</button>    
+  </div>
+</ion-footer>

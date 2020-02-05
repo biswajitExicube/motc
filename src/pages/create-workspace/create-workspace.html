@@ -1,0 +1,71 @@
+<ion-header dir="{{direction}}">
+  <ion-navbar>
+    <button ion-button class="hamburgerBtn" (click)="openMenu()" *ngIf="!show">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      {{'ePortal' | translate}}
+      <img src="assets/imgs/logo_small.png" alt="Image">
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <toolbar></toolbar>
+  </ion-toolbar>
+</ion-header>
+  
+
+
+<ion-content class="CRWSpaceContent">
+  <ion-label class="labelHead">
+    <img src="assets/imgs/teamwork.png">
+    {{'Create Workspace' | translate}}
+  </ion-label>
+  <!-- <form [formGroup]="CRWSpaceData" (ngSubmit)="createWorkSpace($event)"> -->
+    <ion-list no-lines class="CRWSpaceList">
+      <ion-item>
+        <ion-label stacked>{{'name' | translate}}</ion-label>
+        <ion-input [(ngModel)]="workSpaceName" placeholder="workspace name"></ion-input>
+      </ion-item>
+    </ion-list>
+    <div class="radioDiv">
+      <h3>{{'kind' | translate}}</h3>
+      <ion-list radio-group [(ngModel)]="kindGroupOptions" (ionChange)="kindSelect($event)">
+        <ion-item>
+          <ion-label>{{'project' | translate}}</ion-label>
+          <!-- <ion-radio item-left  value="project"></ion-radio> -->
+          <ion-radio item-left  value="1"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{'workGroup' | translate}}</ion-label>
+          <!-- <ion-radio item-left value="workGroup"></ion-radio> -->
+          <ion-radio item-left value="0"></ion-radio>
+        </ion-item>
+      </ion-list>
+    </div>
+    <div class="radioDiv">
+      <h3>{{'privacy' | translate}}</h3>
+      <ion-list radio-group [(ngModel)]="privacyGroupOption" (ionChange)="privacySelect($event)">
+        <ion-item>
+          <ion-label>{{'private' | translate}}</ion-label>
+          <!-- <ion-radio item-left checked="true" value="private"></ion-radio> -->
+          <ion-radio item-left checked="true" value="1"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{'public' | translate}}</ion-label>
+          <!-- <ion-radio item-left value="public"></ion-radio> -->
+          <ion-radio item-left value="0"></ion-radio>
+        </ion-item>
+      </ion-list>
+    </div>
+    <ion-list class="CRWSpaceList">
+      <ion-item>
+        <ion-label stacked>{{'description' | translate}}</ion-label>
+        <ion-textarea [(ngModel)]="workSpaceDesc" placeholder="workspace Description" rows="5"></ion-textarea>
+      </ion-item>
+    </ion-list>
+    <button block class="nextBtn" type="submit"  (click)="createWorkspace()">{{'next' | translate}}</button>
+  <!-- </form> -->
+  </ion-content>
+<!-- <ion-footer>
+  <tab type="any"></tab>
+</ion-footer> -->

@@ -1,0 +1,30 @@
+<ion-header dir="{{direction}}">
+  <ion-navbar>
+    <button ion-button class="hamburgerBtn" (click)="openMenu()">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      {{'ePortal' | translate}}
+      <img src="assets/imgs/logo_small.png" alt="Image">
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <toolbar></toolbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="aboutContent">
+  <ion-card class="aboutCard">
+    <ion-card-header>{{aboutData.Title}}</ion-card-header>
+    <div class="banner">
+      <img  src="{{aboutData.PictureBase64String? aboutData.PictureBase64String : ''}}" alt="About image not found">
+    </div>
+    <ion-card-content>
+      <p [innerHTML]="aboutData.Description"></p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+<ion-footer>
+  <tab type="about"></tab>
+</ion-footer>

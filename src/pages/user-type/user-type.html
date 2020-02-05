@@ -1,0 +1,31 @@
+<!-- <ion-header dir="{{direction}}">
+  <ion-navbar>
+    <button ion-button class="hamburgerBtn" (click)="openMenu()">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      {{'ePortal' | translate}}
+      <img src="assets/imgs/logo_small.png" alt="Image">
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <toolbar></toolbar>
+  </ion-toolbar>
+</ion-header> -->
+
+
+<ion-content class="userTypeContent">
+  <div class="userTypeBody">
+    <ion-card>
+      <ion-card-header>{{'typeUserText' | translate}} <button (click)="close()">&times;</button></ion-card-header>
+      <ion-card-content>
+        <div class="typeBtnDiv">
+          <button ion-button (click)="userLogin('member')">{{'member' | translate}}</button>
+          <button ion-button (click)="userLogin('admin')">{{'admin' | translate}}</button>
+          <button ion-button (click)="userLogin('general')">{{'notMember' | translate}}</button>
+        </div>
+        <p><b>Note : </b>This is a Dummy Screen to Simulate Different users type. This page will not be in the actual App.</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

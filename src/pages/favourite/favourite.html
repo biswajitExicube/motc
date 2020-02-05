@@ -1,0 +1,169 @@
+<ion-header dir="{{direction}}">
+    <ion-navbar>
+          <button ion-button class="hamburgerBtn" (click)="openMenu()">
+                <ion-icon name="menu"></ion-icon>
+          </button>
+
+          <ion-title>
+                {{'ePortal' | translate}}
+                <img src="assets/imgs/logo_small.png" alt="Image">
+          </ion-title>
+    </ion-navbar>
+
+    <ion-toolbar>
+          <toolbar></toolbar>
+    </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content class="favouriteContent">
+    <ion-list-header>
+        <ion-icon name="md-heart" ></ion-icon>
+        {{'Favourite' | translate}}
+    </ion-list-header>
+
+    <div class="segmentBar">
+        <ion-segment [(ngModel)]="favSegModel" color="primary" (ionChange)="segmentChanged($event)">
+              
+            <ion-segment-button value="0">
+                  {{'News' | translate}}
+              </ion-segment-button>
+
+              <ion-segment-button value="1">
+                  {{'Events' | translate}}
+              </ion-segment-button>
+
+              <ion-segment-button value="2">
+                  {{'workspace' | translate}}
+              </ion-segment-button>
+
+              <ion-segment-button value="3">
+                  {{'files' | translate}}
+              </ion-segment-button>
+
+        </ion-segment>
+    </div>
+    
+    <div class="innerContent">
+          <ion-slides (ionSlideDidChange)="onSlideChanged($event)" #loopSlider>
+
+              <ion-slide>
+                  <ion-list no-lines class="newsList">
+
+                      <ion-item 
+                        *ngFor="let news of FavNewslist; let i=index"
+                        [ngClass]="{active: isGroupShown(i)}" (click)="goDetail('news',news)">
+                          <ion-avatar item-left>
+                              <img src="assets/imgs/profileImage.jpeg" alt="Image">
+                          </ion-avatar>
+
+                          <h2>{{news.Title}}</h2>
+                          <h3>{{news.Description}}</h3>
+
+                          <p>
+                              <span class="dateSpan">
+                                  <span>{{news.newsDate}}</span> | 
+                                  <span>{{news.newsTime}}</span>
+                              </span>
+                              <button ion-button>
+                                  <ion-icon name="md-heart"></ion-icon>
+                              </button>
+                          </p>
+                          
+                      </ion-item>
+                      <ion-item class="noDataItem" *ngIf="FavNewslist?.length == 0">{{'noData' | translate}}</ion-item>
+                  
+                  </ion-list>
+              </ion-slide>
+
+              <!-- Favourite Events-->
+              <ion-slide>
+                  <ion-list no-lines class="eventsList">
+                      <ion-item *ngFor="let event of FavEventslist; let j=index;" (click)="goDetail('event',event)">
+                          <ion-avatar item-left>
+                              <img src="assets/imgs/empty_calendar_Y.png" alt="Image">
+                              <p>{{event.eventDate}} {{event.eventMonth}}</p>
+                          </ion-avatar>
+
+                          <h2>{{event.Title}}</h2>
+
+                          <p>
+                              <span><ion-icon name="md-pin"></ion-icon> Location</span>
+                              <!-- <button ion-button (click)="toggleGroup(j)">
+                                  <ion-icon [name]="isGroupShown(j)? 'md-heart-outline' : 'md-heart'"></ion-icon>
+                              </button> -->
+                            <button ion-button>
+                                <ion-icon name="md-heart"></ion-icon>
+                            </button>
+                          </p>
+                      </ion-item>
+                      <ion-item class="noDataItem" *ngIf="FavEventslist?.length == 0">{{'noData' | translate}}</ion-item>
+                  
+                  </ion-list>
+              </ion-slide>
+
+              <!-- Favourite Workspace -->
+              <ion-slide>
+                  <div class="workSpaceDiv">
+                      <div class="workGPDetail" *ngFor="let work of FavWorkspacelist; let k=index">
+                            <span class="personIcon">
+                                <img src="assets/imgs/friendIcon_Y.png" alt="Image">
+                                <!-- <button ion-button (click)="toggleGroup(k)"> -->
+                                    <!-- <ion-icon [name]="isGroupShown(k)? 'md-heart-outline' : 'md-heart'"></ion-icon> -->
+                                    <ion-icon name="md-heart"></ion-icon>
+                                <!-- </button> -->
+                            </span>
+
+                            <h3 (click)="knowMore(work)">{{work.Title}}</h3>
+
+                            <p class="descP" *ngIf="work.Description">{{work.Description}}</p>
+
+                            <div class="missionDiv">
+                                <p (click)="goMissions(work)"><span><ion-icon name="clipboard"></ion-icon></span>{{work.missions? work.missions : 0}} {{'mission' | translate}}</p>
+                                <button (click)="knowMore(work)" color="themeColor2">{{'more' | translate}}<span><ion-icon name="md-arrow-round-forward"></ion-icon></span></button>
+                            </div>
+
+                      </div>
+                      <ion-item class="noDataItem" *ngIf="FavWorkspacelist?.length == 0">{{'noData' | translate}}</ion-item>
+                  
+                  </div>
+              </ion-slide>
+
+              <!-- Favourite Documents-->
+              <ion-slide>
+                  <ion-list no-lines class="fileList">
+                      <ion-item *ngFor="let dirItem of FavDocumentslist; let j=index;">
+
+                          <img item-left src="{{dirItem.PictureBase64String?dirItem.PictureBase64String : 'assets/imgs/wordIcon.png'}}" alt="Icon">
+                          
+                          <h2>{{dirItem.Title}}</h2>
+
+                          <p *ngIf="dirItem.Description">{{dirItem.Description}}</p>
+
+                          <span item-right (click)="dirConnect(j)">
+                              <ion-icon
+                                [ngClass]="{active: shownConnect == j}"                   
+                                [name]="shownConnect == j ? 'ios-arrow-forward' : 'ios-arrow-back'">
+                              </ion-icon>
+                          </span>
+
+                          <div class="connectDiv" *ngIf="shownConnect == j ">
+                            <!-- <span (click)="forCall(dirItem)"><ion-icon name="md-heart"></ion-icon></span> -->
+                            <span (click)="openShare(dirItem)"><img src="assets/imgs/share_white.png"></span>
+                            <span (click)="downloadDoc(dirItem)"><img src="assets/imgs/download_white.png"></span>
+                          </div>
+
+                      </ion-item>
+                      <ion-item class="noDataItem" *ngIf="FavDocumentslist?.length == 0">{{'noData' | translate}}</ion-item>        
+                  </ion-list> 
+              </ion-slide>
+
+          </ion-slides>
+
+    </div>
+</ion-content>
+
+<ion-footer>
+  <tab type="any"></tab>
+</ion-footer>

@@ -1,0 +1,59 @@
+<ion-header dir="{{direction}}">
+  <ion-navbar>
+    <!-- <button ion-button class="hamburgerBtn" (click)="openMenu()">
+      <ion-icon name="menu"></ion-icon>
+    </button> -->
+    <ion-title>
+      {{'ePortal' | translate}}
+      <img src="assets/imgs/logo_small.png" alt="Image">
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <toolbar></toolbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="searchDirContent">
+  <ion-label class="labelHead">
+    <ion-icon name="search"></ion-icon>
+    {{'Search Directory' | translate}}
+  </ion-label>
+  <searchbar type="advanceBtn" search="general" (advance)="advanceSearch()" [ngClass]="showList? 'showList' : ''"></searchbar>
+  <ion-list no-lines class="dirList" *ngIf="showList">
+    <ion-item class="dirListItem"
+      *ngFor="let dir of directoryList; let i=index;" text-wrap
+      
+      [ngClass]="{active: isGroupShown(i)}">
+      <h3 (click)="toggleGroup(i)" >
+        {{dir.title}}
+        <ion-icon [name]="isGroupShown(i) ? 'ios-arrow-up' : 'ios-arrow-down'"></ion-icon>
+      </h3>
+      <div *ngIf="isGroupShown(i)">
+        <ion-list no-lines>
+          <ion-item *ngFor="let dirItem of dir.dirDetails; let j=index;">
+            <ion-icon item-left name="{{dirItem.icon}}"></ion-icon>
+            <h2>{{dirItem.name}}</h2>
+            <p>{{dirItem.desc}}</p>
+            <h4>{{dirItem.position}}</h4>
+            <ion-icon item-right 
+              [ngClass]="{active: shownConnect == j}" 
+              (click)="dirConnect(j)" 
+              [name]="shownConnect == j ? 'ios-arrow-forward' : 'ios-arrow-back'">
+            </ion-icon>
+            <div class="connectDiv" *ngIf="shownConnect == j ">
+                <!-- <span (click)="forCall(dirItem)"><ion-icon name="ios-call"></ion-icon></span> -->
+                <a [href]="skypeUser"><ion-icon name="ios-call"></ion-icon></a>
+                <span (click)="forchat(dirItem)"><ion-icon name="ios-chatbubbles"></ion-icon></span>
+                <span (click)="forMail(dirItem)"><ion-icon name="ios-mail"></ion-icon></span>
+              </div>
+          </ion-item>            
+        </ion-list>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <tab type="home"></tab>
+</ion-footer>

@@ -1,0 +1,55 @@
+<ion-header dir="{{direction}}">
+  <ion-navbar>
+    <!-- <button ion-button class="hamburgerBtn" (click)="openMenu()">
+      <ion-icon name="menu"></ion-icon>
+    </button> -->
+    <ion-title>
+      {{'ePortal' | translate}}
+      <img src="assets/imgs/logo_small.png" alt="Image">
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <toolbar></toolbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="workSpaceRequestContent">
+  <ion-label class="labelHead">
+    <img src="assets/imgs/teamwork.png">
+    {{'requestList' | translate}}
+  </ion-label>
+  <!-- <ion-searchbar placeholder="{{'search' | translate}}" [(ngModel)]="requestSearch" (ionInput)="inputRequest($event)"></ion-searchbar> -->
+  <ion-searchbar 
+  placeholder="{{'search' | translate}}"
+  [(ngModel)]="myInput"
+  (ionInput)="inputRequest(myInput)">
+  </ion-searchbar>
+  <!-- <ion-list no-lines class="requestList" *ngIf="showRqstList"> -->
+  <ion-list no-lines class="requestList">
+    <ion-item *ngFor="let item of tempWSrequestData; let i=index">
+      <ion-checkbox [ngClass]="{active: shownConnect == i}" item-start (ionChange)="userSelect(item,i)"></ion-checkbox>
+      <ion-label>
+        <!-- <h2>{{item.EmployeeName}}</h2> -->
+        <h2>{{item.Title ? item.title : ''}}</h2>
+        <h3>
+          <!-- <span class="type">{{item.ProfileType}}</span> -->
+          <span class="type">{{item.User? item.User.LookupId ? item.User.LookupId : '': ''}}</span>
+        </h3>
+      </ion-label>
+      <span item-end>
+        <!-- <button ion-button class="" type="button" (click)="userSelect(i)">
+          <img src="assets/imgs/addIcon.png">
+        </button> -->
+        <button ion-button class="" type="button" (click)="ignoreRqst(item,i)">
+          <img src="assets/imgs/delIcon.png">
+        </button>
+      </span>
+    </ion-item>       
+  </ion-list>
+  <button ion-button block class="nextBtn" type="submit" (click)="sendRqst()">{{'done' | translate}}</button>
+</ion-content>
+<ion-footer>  
+  <tab type="home" *ngIf="show"></tab>
+  <tab type="any" *ngIf="sideMenu"></tab>
+</ion-footer>

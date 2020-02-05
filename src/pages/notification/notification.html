@@ -1,0 +1,34 @@
+<ion-header dir="{{direction}}">
+  <ion-navbar>
+    <button ion-button class="hamburgerBtn" (click)="openMenu()">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      {{'ePortal' | translate}}
+      <img src="assets/imgs/logo_small.png" alt="Image">
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <toolbar></toolbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="notiContent">
+  <!-- <searchbar search="general"></searchbar> -->
+  <ion-label class="labelHead">
+    <img src="assets/imgs/notifyIcon_active.png">
+    {{'notification' | translate}}
+  </ion-label>
+  <ion-list no-lines class="notificationList">
+    <!-- <ion-item *ngFor="let notify of notificationList; let i=index;" (click)="notifyDetail(notify)"> -->
+    <ion-item *ngFor="let notify of notificationList; let i=index;">
+      <p><span><ion-icon name="md-calendar"></ion-icon> {{notify.notifyDate}}</span> | <span>{{notify.notifyTime}}</span></p>
+      <h3 [innerHTML]="notify.Content"></h3>
+    </ion-item>
+    <ion-item class="noDataItem" *ngIf="notificationList?.length == 0">{{'noData' | translate}}</ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <tab type="any"></tab>
+</ion-footer>

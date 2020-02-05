@@ -1,0 +1,39 @@
+<ion-header dir="{{direction}}">
+  <ion-navbar>
+    <button ion-button class="hamburgerBtn" (click)="openMenu()">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      {{'ePortal' | translate}}
+      <img src="assets/imgs/logo_small.png" alt="Image">
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <toolbar></toolbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="myTaskContent">
+  <ion-label class="labelHead">
+    <img src="assets/imgs/politics_pink.png">
+    {{'myTask' | translate}}
+  </ion-label>
+  <ion-list no-lines class="taskList">
+    <ion-item *ngFor="let task of taskList; let i=index;" (click)="goDetail(task)">
+      <h3>{{task.TaskTitle}}</h3>
+      <p>
+        <span class="flexSpan">{{task.Completion}}</span>
+        <span class="flexSpan">
+          <img src="assets/imgs/calendar_G.png" alt="Icon">
+          <span>Due Date</span>
+          {{task.endDate}}
+        </span>
+      </p>
+    </ion-item>
+    <ion-item class="noDataItem" *ngIf="taskList?.length == 0">{{'noData' | translate}}</ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <tab type="any"></tab>
+</ion-footer>

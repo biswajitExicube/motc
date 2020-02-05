@@ -1,0 +1,61 @@
+<ion-menu [content]="content" type="overlay" side="right" id="menuRight">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title (click)="goProfile()">
+        <img src="assets/imgs/demoPerson.png">
+        <h3>Hello, <span>{{employeeName}}</span></h3>
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list no-lines>
+      <button menuClose ion-item detail-none *ngFor="let p of pages" (click)="openPage(p)">
+        {{p.title | translate}}
+      </button>
+    </ion-list>
+  </ion-content>
+  <ion-footer>
+    <ion-list no-lines>
+        <button menuClose detail-none ion-item (click)="logout()">
+          {{ 'logout' | translate }}
+        </button>
+        <button menuClose detail-none ion-item (click)="changeLang()">
+          {{ 'language' | translate }}
+        </button>
+    </ion-list>
+    <p>{{'copyRightText' | translate}}</p>
+  </ion-footer>
+</ion-menu>
+<ion-menu [content]="content" type="overlay" side="left" id="menuLeft">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title (click)="goProfile()">
+          <img src="assets/imgs/demoPerson.png">
+          <h3>Hello, <span>{{employeeName}}</span></h3>
+        </ion-title>
+      </ion-toolbar>
+    </ion-header>
+  
+    <ion-content>
+      <ion-list no-lines>
+        <button menuClose ion-item detail-none *ngFor="let p of pages" (click)="openPage(p)">
+          {{p.title | translate}}
+        </button>
+      </ion-list>
+    </ion-content>
+    <ion-footer>
+      <ion-list no-lines>
+          <button menuClose detail-none ion-item (click)="logout()">
+            {{ 'logout' | translate }}
+          </button>
+          <button menuClose detail-none ion-item (click)="changeLang()">
+            {{ 'language' | translate }}
+          </button>
+      </ion-list>
+      <p>{{'copyRightText' | translate}}</p>
+    </ion-footer>
+  </ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" dir="{{direction}}" #content swipeBackEnabled="false"></ion-nav>

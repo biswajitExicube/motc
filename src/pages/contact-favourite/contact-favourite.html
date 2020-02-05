@@ -1,0 +1,51 @@
+<ion-header dir="{{direction}}">
+  <ion-navbar>
+    <button ion-button class="hamburgerBtn" (click)="openMenu()" *ngIf="showMenu">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      {{'ePortal' | translate}}
+      <img src="assets/imgs/logo_small.png" alt="Image">
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <toolbar></toolbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="favContactContent">
+  <ion-label class="labelHead">
+    <ion-icon name="search"></ion-icon>
+    {{'favContact' | translate}}
+  </ion-label>
+  <searchbar type="btnHide" search="general" (searchInput)="searchNews($event)"></searchbar>
+  <ion-list no-lines class="contList">
+
+    <h2 class="noDataItem"  *ngIf="contList?.length == 0">{{'noData' | translate}}</h2>
+
+    <ion-item *ngFor="let contact of contList; let i=index;">
+      <h2 (click)="goProfile(contact)">{{contact.EmployeeName}}</h2>
+      <p (click)="goProfile(contact)">{{contact.JobTitle}}</p>
+      <h4 (click)="goProfile(contact)">{{contact.Department}}</h4>
+      <span item-right (click)="dirConnect(i)">
+        <img [src]="shownConnect == i ? 'assets/imgs/collapseIcon.png' : 'assets/imgs/expandMore.png'">
+      </span>
+      <div class="connectDiv" *ngIf="shownConnect == i ">
+          <!-- <a [href]="contact.customcreateSkype?contact.customcreateSkype:''"><img src="assets/imgs/callIcon_white.png"></a>
+          <a [href]="contact.customSkypeChat?contact.customSkypeChat:''"><img src="assets/imgs/chatIcon_white.png"></a> -->
+          <a *ngIf="contact.OfficePhone" [href]="contact.customcreateSkype?contact.customcreateSkype:''"><img src="assets/imgs/callIcon_white.png"></a>
+          <a *ngIf="contact.OfficePhone" [href]="contact.customSkypeChat?contact.customSkypeChat:''"><img src="assets/imgs/chatIcon_white.png"></a>
+          <button class="chatBtn" *ngIf="!contact.OfficePhone" (click)="noNumber('call')"><img src="assets/imgs/callIcon.png"></button>
+          <button class="chatBtn" *ngIf="!contact.OfficePhone" (click)="noNumber('chat')"><img src="assets/imgs/chatIcon.png"></button>
+          
+          <span (click)="forMail(contact)"><img src="assets/imgs/mailIcon_white.png"></span>
+          <span (click)="forDetails(contact)"><img src="assets/imgs/eyeIcon.png"></span>
+        </div>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <tab type="home" *ngIf="!showMenu"></tab>
+  <tab type="any" *ngIf="showMenu"></tab>
+</ion-footer>

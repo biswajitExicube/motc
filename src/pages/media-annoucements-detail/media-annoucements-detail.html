@@ -1,0 +1,45 @@
+<ion-header dir="{{direction}}">
+  <ion-navbar>
+    <!-- <button ion-button class="hamburgerBtn" (click)="openMenu()">
+      <ion-icon name="menu"></ion-icon>
+    </button> -->
+    <ion-title>
+      {{'ePortal' | translate}}
+      <img src="assets/imgs/logo_small.png" alt="Image">
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <toolbar></toolbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="announceDetailContent">
+    <ion-card class="detailCard">
+        <ion-card-header>
+          <img src="assets/imgs/announceIcon_pink.png" alt="Image">
+          {{'announceDetail' | translate}}
+        </ion-card-header>
+        <!-- <searchbar type="btnHide" search="general"></searchbar> -->
+        <div class="banner">
+          <img src="assets/imgs/aboutBanner.jpg" alt="Image">
+        </div>
+        <ion-label class="infoLabel">
+          <p><span><img src="assets/imgs/calendar_Y.png"> {{announcementData.newsDate ? announcementData.newsDate : ''}}</span> | <span>{{announcementData.newsTime ? announcementData.newsTime : ''}}</span></p>
+          <!-- <button ion-button (click)="eventLiking()">
+            <ion-icon name="md-heart-outline" *ngIf="!eventLike"></ion-icon>
+            <ion-icon name="md-heart" *ngIf="eventLike"></ion-icon>
+          </button> -->
+        </ion-label>
+        <ion-card-content>
+          <!-- <p><span><ion-icon name="md-pin"></ion-icon> Location</span></p> -->
+          <h3>{{announcementData.Title ? announcementData.Title : ''}}</h3>
+          <h5 [innerHTML]="announcementData.Descroption"></h5>
+        </ion-card-content>
+      </ion-card>
+</ion-content>
+<ion-footer>
+  <tab type="any" *ngIf="!fromMedia && !fromHome"></tab>
+  <tab type="mediaCenter" *ngIf="fromMedia"></tab>
+  <tab type="home" *ngIf="fromHome"></tab>
+</ion-footer>

@@ -1,0 +1,129 @@
+page-invite-member {
+    .inviteMemBerContent{
+        .labelHead{
+            margin: 0px;
+            padding: 8px 16px;
+            border-top: 1px solid #dedede !important;
+            border-bottom: 1px solid #dedede !important;
+            color: #000;
+            text-transform: uppercase;
+            font-size: 16px;
+            img{
+                width: 20px;
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: 8px;
+            }
+        }
+        ion-searchbar{
+            width: 100%;
+            background: none;
+            border-bottom: 1px solid #dedede;
+            .searchbar-search-icon{
+                left: 10px;
+            }
+            .searchbar-clear-icon{
+                right: 4px;
+            }
+            input{
+                padding-left: 35px !important;
+                padding-right: 25px !important;
+                border-radius: 8px !important;
+                background: #dfdfe0 !important;
+                box-shadow: none !important;
+                font-family: 'Lato-Regular';
+            }
+        }
+        .memberList{
+            margin: 10px 0px 20px 0px;
+            padding: 0px 16px;
+            ion-item{
+                background: #fff;
+                box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.2);
+                border-radius: 8px;
+                margin-bottom: 10px;
+                .item-inner{
+                    ion-label{
+                        white-space: normal;
+                        h2{
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            .memName{
+                                font-family: 'Lato-Bold';
+                                font-size: 17px;
+                                color: rgba(0, 0, 0, 0.87);
+                                line-height: 24px;
+                            }
+                            .inviteBtn{
+                                background: none;
+                                font-size: 14px;
+                                color: $themeColor2;
+                                line-height: 24px;
+                                text-transform: uppercase;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+ion-nav[dir="rtl"]{
+    ion-searchbar{
+        .searchbar-search-icon{
+            right: 10px;
+            left: initial;
+        }
+        .searchbar-clear-icon{
+            left: 4px;
+            right: initial;
+        }
+        input{
+            text-align: right;
+            padding-left: 25px !important;
+            padding-right: 35px !important;
+        }
+    }
+}
+@media screen 
+and (min-device-width : 414px) 
+and (min-device-height :   736px) 
+and (-webkit-device-pixel-ratio : 3) { // Iphone 8plus
+    page-invite-member .inviteMemBerContent .memberList{
+        height: 65vh;
+    }
+}
+@media screen 
+and (min-device-width : 414px) 
+and (min-device-height :   896px) 
+and (-webkit-device-pixel-ratio : 2) { // Iphone XR
+    page-invite-member .inviteMemBerContent .memberList{
+        height: 65vh;
+    }
+}
+@media screen 
+and (min-device-width : 375px) 
+and (min-device-height : 812px) 
+and (-webkit-device-pixel-ratio : 3) { // Iphone XS
+    page-invite-member .inviteMemBerContent .memberList{
+        height: 65vh;
+    }
+}
+
+@media screen 
+and (min-device-width : 414px) 
+and (min-device-height :   896px) 
+and (-webkit-device-pixel-ratio : 3) { // Iphone XS Max
+    page-invite-member .inviteMemBerContent .memberList{
+        height: 65vh;
+    }
+}
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-height : 667px){ // iphone 7
+    page-invite-member .inviteMemBerContent .memberList{
+        height: 62vh;
+    }
+    
+}

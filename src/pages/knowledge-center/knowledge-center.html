@@ -1,0 +1,180 @@
+<ion-header dir="{{direction}}">
+
+    <ion-navbar>
+        <button ion-button class="hamburgerBtn" (click)="openMenu()">
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>
+          {{'ePortal' | translate}}
+          <img src="assets/imgs/logo_small.png" alt="Image">
+        </ion-title>
+    </ion-navbar>
+
+    <ion-toolbar>
+        <toolbar></toolbar>
+    </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content class="politComponent">
+  <ion-label class="labelHead">
+    <img src="assets/imgs/politics_pink.png" alt="Image">
+    {{'Knowledge' | translate}}
+  </ion-label>
+
+  <searchbar type="advanceBtn" search="general" (advance)="advanceSearch()" (searchInput)="searchDocument($event)" [ngClass]="advPolitic? 'showList' : ''"></searchbar>
+  
+    <ion-list *ngIf="politModel =='politThree' " no-lines class="advpolList" [ngClass]="advPolitic ? 'listOpen' : ''">
+        <ion-item class="advListItem" *ngFor="let item of advSearchList; let i=index;"
+            text-wrap            
+            [ngClass]="{active: isGroupShown(i)}">
+            <h3 (click)="fetchOtherKCdataByCategory(item,i)" >
+                {{item}}
+                <!-- <ion-icon [name]="isGroupShown(i) ? 'ios-arrow-up' : 'ios-arrow-down'"></ion-icon> -->
+            </h3>
+        </ion-item>
+    </ion-list>
+
+    <ion-list *ngIf="politModel =='politTwo' " no-lines class="advpolList" [ngClass]="advPolitic ? 'listOpen' : ''">
+        <ion-item class="advListItem" *ngFor="let item of bestPracticeCatagory; let i=index;"
+            text-wrap            
+            [ngClass]="{active: isGroupShown(i)}">
+            <h3 (click)="filterBestPractice(item)" >
+                {{item}}
+                <!-- <ion-icon [name]="isGroupShown(i) ? 'ios-arrow-up' : 'ios-arrow-down'"></ion-icon> -->
+            </h3>
+        </ion-item>
+        <ion-item class="advListItem"  text-wrap [ngClass]="{active: isGroupShown(i)}">
+            <h3 (click)="allDataFetch('bestpractice')" >ALL</h3>
+        </ion-item>
+    </ion-list>
+
+    <ion-list *ngIf="politModel =='politOne' " no-lines class="advpolList" [ngClass]="advPolitic ? 'listOpen' : ''">
+        <ion-item class="advListItem" *ngFor="let item of politicsCatagory; let i=index;"
+            text-wrap            
+            [ngClass]="{active: isGroupShown(i)}">
+            <h3 (click)="filterpolitics(item)" >
+                {{item}}
+                <!-- <ion-icon [name]="isGroupShown(i) ? 'ios-arrow-up' : 'ios-arrow-down'"></ion-icon> -->
+            </h3>
+        </ion-item>
+        <ion-item class="advListItem"  text-wrap [ngClass]="{active: isGroupShown(i)}">
+            <h3 (click)="allDataFetch('politics')" >ALL</h3>
+        </ion-item>
+    </ion-list>
+
+  <ion-segment [(ngModel)]="politModel" color="primary" (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="politOne"> {{'politics' | translate}} </ion-segment-button>
+      <ion-segment-button value="politTwo"> {{'bestPractice' | translate}} </ion-segment-button>
+      <ion-segment-button value="politThree"> {{'others' | translate}} </ion-segment-button>
+  </ion-segment>
+
+  <div class="innerContent">
+
+      <ion-slides (ionSlideDidChange)="onSlideChanged($event)" #loopSlider>
+
+          <ion-slide>
+              <div *ngFor="let dirItem of politicsData; let j=index;">
+                  <ion-list no-lines>
+                      <ion-item>
+
+                            <img item-left src="{{dirItem.PictureBase64String? dirItem.PictureBase64String : ''}}" alt="Icon">
+                            <h2>{{dirItem.DocTitle}}</h2>
+                            <p>{{dirItem.DocDate}}</p>
+
+                            <span item-right (click)="dirConnect(dirItem,j)">
+                              <ion-icon
+                                [ngClass]="{active: shownConnect == j}"                   
+                                [name]="shownConnect == j ? 'ios-arrow-forward' : 'ios-arrow-back'">
+                              </ion-icon>
+                            </span>
+
+                            <div class="connectDiv" *ngIf="shownConnect == j ">
+                                <span (click)="forLike(dirItem)">
+                                    <ion-icon name="{{dirItem.IsFavourite == false ? 'md-heart-outline' : 'md-heart'}}"></ion-icon>
+                                </span>
+                                <span (click)="shareItem(dirItem)"><img src="assets/imgs/share_white.png"></span>
+                                <span (click)="forDownload(dirItem)">
+                                    <img src="assets/imgs/download_white.png">
+                                </span>
+                            </div>
+
+                      </ion-item>            
+                  </ion-list>      
+              </div>
+          </ion-slide>
+
+          <ion-slide>
+              <div *ngFor="let dirItem of bestPracticeData; let j=index;">
+                  <ion-list no-lines>
+                      <ion-item>
+
+                          <img item-left src="{{dirItem.PictureBase64String? dirItem.PictureBase64String : ''}}" alt="Icon">
+                          <h2>{{dirItem.DocTitle}}</h2>
+                          <p>{{dirItem.DocDate}}</p>
+
+                          <span item-right (click)="dirConnect(dirItem, j)">
+                            <ion-icon
+                              [ngClass]="{active: shownConnect == j}"                   
+                              [name]="shownConnect == j ? 'ios-arrow-forward' : 'ios-arrow-back'">
+                            </ion-icon>
+                          </span>
+
+                          <div class="connectDiv" *ngIf="shownConnect == j ">
+                              <span (click)="forLike(dirItem)">
+                                    <ion-icon name="{{dirItem.IsFavourite == false ? 'md-heart-outline' : 'md-heart'}}"></ion-icon>
+                                </span>
+                              <span (click)="shareItem(dirItem)"><img src="assets/imgs/share_white.png"></span>
+                              <span (click)="forDownload(dirItem)">
+                                  <img src="assets/imgs/download_white.png">
+                              </span>
+                          </div>
+
+                      </ion-item>            
+                  </ion-list>      
+              </div>
+          </ion-slide>
+
+
+          <ion-slide>
+              <div *ngFor="let dirItem of otherknowledgeCenterList; let j=index;">
+                  <ion-list no-lines>
+                      <ion-item>
+
+                          <img item-left src="{{dirItem.PictureBase64String? dirItem.PictureBase64String : ''}}" alt="Icon">
+                          <h2>{{dirItem.DocTitle}}</h2>
+                          <p>{{dirItem.DocDate}}</p>
+
+                          <span item-right (click)="dirConnect(dirItem, j)">
+                            <ion-icon
+                              [ngClass]="{active: shownConnect == j}" 
+                              [name]="shownConnect == j ? 'ios-arrow-forward' : 'ios-arrow-back'">
+                            </ion-icon>
+                          </span>
+
+                          <div class="connectDiv" *ngIf="shownConnect == j ">
+                              <span (click)="forLike(dirItem)">
+                                    <ion-icon name="{{dirItem.IsFavourite == false ? 'md-heart-outline' : 'md-heart'}}"></ion-icon>
+                                </span>
+                              <span (click)="shareItem(dirItem)"><img src="assets/imgs/share_white.png"></span>
+                              <span (click)="forDownload(dirItem)">
+                                  <img src="assets/imgs/download_white.png">
+                              </span>
+                          </div>
+
+                      </ion-item>            
+                  </ion-list>      
+              </div>
+          </ion-slide>
+
+
+      </ion-slides>
+
+  </div>
+
+
+</ion-content>
+<ion-footer>
+  <tab type="knowledge"></tab>
+</ion-footer>

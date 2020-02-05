@@ -1,0 +1,45 @@
+<ion-header dir="{{direction}}">
+  <ion-navbar>
+    <!-- <button ion-button class="hamburgerBtn" (click)="openMenu()">
+      <ion-icon name="menu"></ion-icon>
+    </button> -->
+    <ion-title>
+      {{'ePortal' | translate}}
+      <img src="assets/imgs/logo_small.png" alt="Image">
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <toolbar></toolbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="docListComponent">
+  <ion-label class="labelHead">
+    <img src="assets/imgs/politics_pink.png">
+    {{'docList' | translate}}
+  </ion-label>
+  <div *ngFor="let dirItem of EServList; let j=index;">
+    <ion-list no-lines class="docList">
+      <ion-item>
+        <img item-left src="{{dirItem.PictureBase64String? dirItem.PictureBase64String : ''}}" alt="Icon">
+        <h2>{{dirItem.Title}}</h2>
+        <p>{{dirItem.newsDate}}</p>
+        <span item-right (click)="dirConnect(j)">
+          <ion-icon
+            [ngClass]="{active: shownConnect == j}"                   
+            [name]="shownConnect == j ? 'ios-arrow-forward' : 'ios-arrow-back'">
+          </ion-icon>
+        </span>
+        <div class="connectDiv" *ngIf="shownConnect == j ">
+            <span (click)="forFav(dirItem)"><ion-icon name="{{dirItem.isFollowed == true?'md-heart':'md-heart-outline'}}"></ion-icon></span>
+            <span (click)="forchat(dirItem)"><img src="assets/imgs/share_white.png"></span>
+            <span (click)="download(dirItem.Url)"><img src="assets/imgs/download_white.png"></span>
+          </div>
+      </ion-item>            
+    </ion-list>      
+  </div>
+</ion-content>
+<ion-footer>
+  <tab type="any"></tab>
+</ion-footer>

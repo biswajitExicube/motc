@@ -1,0 +1,24 @@
+<ion-header dir="{{direction}}">
+  <ion-navbar>
+    <button ion-button class="hamburgerBtn" (click)="openMenu()">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      {{'ePortal' | translate}}
+      <img src="assets/imgs/logo_small.png" alt="Image">
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <toolbar></toolbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="privacyPolicyContent">
+  <ion-card class="detailCard">
+    <ion-card-header>{{'Privacy Policy' | translate}}</ion-card-header>
+    <ion-card-content>
+      <p [innerHtml]="privacyData.PrivacyDescription"></p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

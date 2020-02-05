@@ -1,0 +1,40 @@
+page-about {
+    .aboutContent{
+        .aboutCard{
+            width: 100%;
+            margin: 0px auto;
+            border-radius: 0px;
+            box-shadow: none;
+            ion-card-header{
+                white-space: normal;
+                text-align: center;
+                padding: 8px 16px;
+                border-top: 1px solid #ccc;
+                color: $themeColor3;
+                font-weight: bold;
+            }
+            .banner{
+                width: 100%;
+                height: 170px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+            ion-card-content{
+                p{
+                    margin: 0px;
+                    padding: 0px;
+                    font-size: 14px;
+                    line-height: 24px;
+                    color: #000;
+                }
+            }
+        }
+    }
+}

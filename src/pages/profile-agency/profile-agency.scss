@@ -1,0 +1,52 @@
+page-profile-agency {
+    .profAContent{
+        .labelHead{
+            margin: 0px;
+            padding: 8px 16px;
+            border-top: 1px solid #dedede !important;
+            border-bottom: 1px solid #dedede !important;
+            color: #000;
+            text-transform: uppercase;
+            font-size: 16px;
+            // font-family: 'Lato-Bold';
+            img{
+                width: 20px;
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: 5px;
+            }
+        }
+        ion-list.profAList{
+            margin-top: 2px;
+            ion-item{
+                .item-inner{
+                    ion-label{
+                        white-space: normal;
+                        margin-top: 8px;
+                        margin-bottom: 8px;
+                        p{
+                            text-transform: uppercase;
+                            margin-bottom: 8px;
+                            font-size: 12px;
+                            font-family: 'Lato-Bold';
+                        }
+                        h3, h4{                            
+                            font-size: 16px;
+                            font-family: 'Lato-Bold';
+                        }
+                        h4{
+                            font-family: 'Lato-Regular';
+                            line-height: 24px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+ion-nav[dir="rtl"]{
+    page-profile-agency .profAContent .labelHead img{
+        margin-left: 5px;
+        margin-right: 0px;
+    }
+}

@@ -1,0 +1,68 @@
+<ion-header dir="{{direction}}">
+  <ion-navbar>
+    <button ion-button class="hamburgerBtn" (click)="openMenu()" *ngIf="fromMedia == undefined">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      {{'ePortal' | translate}}
+      <img src="assets/imgs/logo_small.png" alt="Image">
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <toolbar></toolbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="surveyContent">
+  <!-- <searchbar></searchbar> -->
+
+    <ion-label class="labelHead">
+      <img src="assets/imgs/survey_pink.png" alt="Image">
+      <span>{{'Survey' | translate}}</span>
+    </ion-label>
+
+
+    <!--  New Survey -->
+    <ion-list no-lines class="surveyList">
+        <div *ngFor="let survey of newSurveys; let i=index">
+            <ion-item (click)="details(survey)">
+                <h2>{{currLang == 'en' ? 
+                  survey.TitleEnglish ?survey.TitleEnglish : ''
+                    : 
+                  survey.TitleArabic ? survey.TitleArabic :''}}</h2>
+                <p>
+                    <span><img src="assets/imgs/total_survey_Y.png"></span>
+                    <span class="survDate">{{survey.EndDate.RFCDateTime ? survey.EndDate.RFCDateTime.substring(0,16) : 'no time found'}}</span>
+                </p>
+            </ion-item>
+        </div>
+    </ion-list>
+    <!--  New Survey -->
+
+
+    <!--  Old Survey -->
+    <ion-label class="labelHead" style="margin-bottom: 15px;">    
+        <span>{{'oldSurvey' | translate}}</span>
+    </ion-label>
+    <ion-list no-lines class="surveyList">
+        <ion-item *ngFor="let oldsurvey of oldSurveys; let i=index">
+            <h2>{{currLang == 'en' ? 
+                oldsurvey.TitleEnglish ?oldsurvey.TitleEnglish : ''
+                  : 
+                oldsurvey.TitleArabic ? oldsurvey.TitleArabic : ''}}</h2>
+            <p>
+                <span><img src="assets/imgs/total_survey_Y.png"></span>
+                <span class="survDate">{{oldsurvey.EndDate.RFCDateTime ? oldsurvey.EndDate.RFCDateTime.substring(0,16) : 'no time found'}}</span>
+            </p>
+        </ion-item>
+        <ion-item class="noDataItem" *ngIf="oldSurveys?.length == 0">{{'noData' | translate}}</ion-item>
+    </ion-list>
+    <!--  Old Survey -->
+
+</ion-content>
+
+<ion-footer>
+    <tab type="mediaCenter" *ngIf="fromMedia != undefined"></tab>
+    <tab type="any" *ngIf="fromMedia == undefined"></tab>
+</ion-footer>

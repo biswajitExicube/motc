@@ -1,0 +1,29 @@
+page-survey {
+    .surveyContent{
+        .labelHead{
+            margin: 0px;
+            padding: 8px 16px;
+            border-top: 1px solid #dedede !important;
+            border-bottom: 1px solid #dedede !important;
+            color: #000;
+            text-transform: uppercase;
+            font-size: 16px;
+            img{
+                width: 20px;
+                margin-right: 8px;
+            }
+            img, span{
+                display: inline-block;
+                vertical-align: middle;
+            }
+        }
+        
+    }
+}
+ion-nav[dir="rtl"]{
+    page-survey .surveyContent .labelHead img{
+        margin-right: 0px;
+        margin-left: 8px;
+    }
+    
+}

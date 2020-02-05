@@ -1,0 +1,33 @@
+<ion-header dir="{{direction}}">
+  <ion-navbar>
+    <!-- <button ion-button class="hamburgerBtn" (click)="openMenu()">
+      <ion-icon name="menu"></ion-icon>
+    </button> -->
+    <ion-title>
+      {{'ePortal' | translate}}
+      <img src="assets/imgs/logo_small.png" alt="Image">
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <toolbar></toolbar>
+  </ion-toolbar>
+</ion-header>
+  
+
+
+<ion-content class="EServeIndContent">
+  <ion-card class="detailCard">
+    <ion-card-header>{{currLang== 'en'? EServDetails.ServiceBrief : EServDetails.ServiceBriefArabic}}</ion-card-header>
+    <!-- <div class="banner">
+      <img src="{{EServDetails.ImageBase64String? 'data:image/jpeg;base64,'+EServDetails.ImageBase64String : ''}}" alt="Image">
+    </div> -->
+    <ion-card-content>
+      <!-- <p>{{currLang== 'en'? EServDetails.TitleEnglish : EServDetails.TitleArabic}}</p> -->
+      <p [innerHtml]="currLang== 'en'? EServDetails.Prerequisites : EServDetails.PrerequisitesArabic"></p>
+      <p [innerHtml]="currLang== 'en'? EServDetails.ServiceDetails : EServDetails.ServiceDetailsArabic"></p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+<ion-footer>
+  <tab type="EService"></tab>
+</ion-footer>

@@ -1,0 +1,122 @@
+page-survey-details {
+    .surveyDContent{
+        .labelHead{
+            margin: 0px;
+            padding: 8px 16px;
+            border-top: 1px solid #dedede !important;
+            border-bottom: 1px solid #dedede !important;
+            color: #000;
+            text-transform: uppercase;
+            font-size: 16px;
+            img{
+                width: 20px;
+                margin-right: 8px;
+            }
+            img, span{
+                display: inline-block;
+                vertical-align: middle;
+            }
+        }
+        .detailList{
+            margin: 0px 16px 60px 16px;
+            .detailDiv{
+                margin-bottom: 10px;
+                ion-item{
+                    border-bottom: none !important;
+                    padding: 0px;
+                    .item-inner{
+                        padding: 0px;
+                        border-bottom: none !important;
+                        ion-label{
+                            color: #222;
+                            font-weight: 500;
+                            font-size: 14px;
+                            margin-right: 0px;
+                        }
+                        ion-textarea{
+                            border: 1px solid #dbdbdb;
+                            border-radius: 8px;
+                        }
+                    }
+                }
+            }
+            h2{
+                font-family: 'Lato-Bold';
+                font-size: 16px;
+                line-height: 24px;
+                color: rgba(0, 0, 0, 0.87);
+            }
+            .radioSList{
+                margin-bottom: 0px;
+                transition: all ease-in-out 0.3s;
+                ion-item{
+                    ion-radio[item-left]{
+                        margin-right: 10px;
+                        .radio-icon{
+                            width: 22px;
+                            height: 22px;
+                            border: 2px solid #787878;
+                            border-radius: 50%;
+                            .radio-inner{
+                                background: transparent;
+                                width: 12px;
+                                height: 12px;
+                                top: 3px;
+                                left: 3px;
+                                border-radius: 50%;
+                                border: none;
+                            }
+                        }
+                        .radio-icon.radio-checked{
+                            border-color: $themeColor2;
+                            .radio-inner{
+                                background: $themeColor2;
+                            }
+                        }
+                    }                    
+                }                
+            }
+        }        
+    }
+    button.nextBtn{
+        background: $themeColor2;
+        margin: 0px;
+        font-size: 16px;
+        text-transform: uppercase;
+        color: #fff;
+        height: 42px;
+        position: fixed;
+        bottom: 0px;
+        width: 100%;
+        left: 0px;
+        z-index: 66;
+    }
+}
+@media screen 
+and (min-device-width : 414px) 
+and (min-device-height :   896px) 
+and (-webkit-device-pixel-ratio : 2) { // Iphone XR
+    page-survey-details button.nextBtn{
+        height: 52px;
+        padding-bottom: 16px;
+    }
+}
+@media screen 
+and (min-device-width : 375px) 
+and (min-device-height : 812px) 
+and (-webkit-device-pixel-ratio : 3) { // Iphone XS
+    page-survey-details button.nextBtn{
+        height: 52px;
+        padding-bottom: 16px;
+    }
+}
+
+@media screen 
+and (min-device-width : 414px) 
+and (min-device-height :   896px) 
+and (-webkit-device-pixel-ratio : 3) { // Iphone XS Max
+    page-survey-details button.nextBtn{
+        height: 52px;
+        padding-bottom: 16px;
+    }
+}

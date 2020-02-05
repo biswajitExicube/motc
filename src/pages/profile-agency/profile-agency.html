@@ -1,0 +1,72 @@
+<ion-header dir="{{direction}}">
+  <ion-navbar>
+    <button ion-button class="hamburgerBtn" (click)="openMenu()" *ngIf="showMenu">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      {{'ePortal' | translate}}
+      <img src="assets/imgs/logo_small.png" alt="Image">
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <toolbar></toolbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="profAContent">
+  <ion-label class="labelHead">
+    <img src="{{agencyData.Logo? agencyData.Logo : 'assets/imgs/logo_small.png'}}">
+    <!-- {{'agencyName' | translate}} -->
+    {{agencyData.Name ? agencyData.Name : ''}}
+  </ion-label>
+  <ion-list no-lines class="profAList">
+
+    <ion-item>
+      <p>{{'name' | translate}}</p>
+      <!-- <h3>{{agencyData.Name}}</h3> -->
+      <h3>{{agencyData.Name ? agencyData.Name : ''}}</h3>
+    </ion-item>
+
+    <ion-item>
+      <p>{{'website' | translate}}</p>
+      <!-- <h3>{{agencyData.Website}}</h3> -->
+      <h3>{{agencyData.Website ? agencyData.Website : 'No website'}}</h3>
+    </ion-item>
+
+    <ion-item>
+      <p>{{'address' | translate}}</p>
+      <!-- <h3>{{agencyData.Address1}}</h3> -->
+      <h3>{{agencyData.Address1 ? agencyData.Address1 : 'No Address '}}</h3>
+    </ion-item>
+
+    <ion-item *ngIf="agencyData.Address2">
+      <p>{{'address' | translate}}</p>
+      <!-- <h3>{{agencyData.Address2}}</h3> -->
+      <h3>{{agencyData.Address2 ? agencyData.Address2 : 'No Address '}}</h3>
+    </ion-item>
+
+    <ion-item>
+      <p>{{'telephone' | translate}}</p>
+      <!-- <h3>{{agencyData.Telephone}}</h3> -->
+      <h3>{{agencyData.Telephone ? agencyData.Telephone : 'No Mobile'}}</h3>
+    </ion-item>
+
+    <ion-item>
+      <p>{{'email' | translate}}</p>
+      <!-- <h3>{{agencyData.Email}}</h3> -->
+      <h3>{{agencyData.Email ? agencyData.Email : 'No email'}}</h3>
+    </ion-item>
+
+    <ion-item>
+      <p>{{'about' | translate}}</p>
+      <!-- <h4>{{agencyData.About}}</h4> -->
+      <h4>{{agencyData.About ? agencyData.About : 'No Bio data added'}}</h4>
+    </ion-item>
+
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <tab type="any" *ngIf="showMenu"></tab>
+  <tab type="home" *ngIf="fromFavCont"></tab>
+</ion-footer>

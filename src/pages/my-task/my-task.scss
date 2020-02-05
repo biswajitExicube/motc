@@ -1,0 +1,73 @@
+page-my-task {
+    .myTaskContent{
+        .labelHead{
+            margin: 0px;
+            padding: 8px 16px;
+            border-top: 1px solid #dedede !important;
+            border-bottom: 1px solid #dedede !important;
+            color: #000;
+            text-transform: uppercase;
+            font-size: 16px;
+            img{
+                width: 20px;
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: 5px;
+            }
+        }
+        .taskList{
+            margin-top: 10px;
+            ion-item{
+                padding: 0px;
+                width: calc( 100% - 32px );
+                margin: 0px auto;
+                margin-bottom: 10px;
+                background: #fff;
+                border-radius: 8px;
+                box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
+                .item-inner{
+                    padding: 0px 16px;
+                    ion-label{
+                        margin: 16px 0px;
+                        white-space: normal;
+                        font-family: 'Lato-Bold';
+                        h3{
+                            font-size: 16px;
+                            color: rgba(0, 0, 0, 0.87);
+                            line-height: 24px;
+                            margin: 0px;
+                        }
+                        p{
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            font-size: 14px;
+                            line-height: 20px;
+                            margin: 6px 0px 0px 0px;
+                            img{
+                                width: 20px;
+                                display: inline-block;
+                                vertical-align: middle;
+                            }
+                            .flexSpan{
+                                color: $themeColor2;
+                                &:last-child{
+                                    font-size: 12px;
+                                }
+                                span{
+                                    color: rgb(132, 142, 152);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+ion-nav[dir="rtl"]{
+    page-my-task .myTaskContent .labelHead img{
+        margin-right: 0px;
+        margin-left: 5px;
+    }
+}

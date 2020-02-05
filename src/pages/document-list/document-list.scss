@@ -1,0 +1,122 @@
+page-document-list {
+    .docListComponent{
+        .labelHead{
+            margin: 0px;
+            padding: 8px 16px;
+            border-top: 1px solid #dedede !important;
+            border-bottom: 1px solid #dedede !important;
+            color: #000;
+            text-transform: uppercase;
+            font-size: 16px;
+            img{
+                width: 20px;
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: 5px;
+            }
+        }
+        ion-list.docList{
+            margin-top: 2px;
+            margin-bottom: 0px;
+            position: relative;
+            ion-item{
+                border-bottom: 1px solid #dedede;
+                // border-radius: 8px;
+                overflow: hidden;
+                .item-inner{
+                    margin-left: 5px;
+                    padding-right: 0px;
+                }
+                img[item-left]{
+                    width: 40px;
+                    margin-right: 8px;
+                }
+                span[item-right]{
+                    position: relative;
+                    z-index: 33;
+                    height: 100%;
+                    background: rgba(0, 0, 0, 0.6);
+                    margin-right: 0px;
+                    color: #fff;
+                    width: 24px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                ion-label{
+                    white-space: normal;
+                    font-family: 'Lato-Bold';
+                    line-height: 24px;
+                    font-size: 16px;
+                    h2{
+                        font-size: 16px;
+                        margin: 0px;
+                    }
+                    p{
+                        margin: 2px 0;
+                        font-size: 14px;
+                        float: right;
+                        font-family: 'Lato-Regular';
+                        color: #848e98;
+                        margin-top: 6px;
+                    }
+                }
+            }
+        }
+        .connectDiv{
+            width: calc( 100% - 24px );
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            position: absolute;
+            z-index: 10;
+            top: 0px;
+            left: 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            text-align: center;
+            transition: all ease-in-out 0.3s;
+            span{
+                border: 1px solid #fff;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 4rem;
+                height: 4rem;
+                margin: 0px 6px;
+                position: relative;
+                z-index: 30;
+                ion-icon{
+                    color: #fff;
+                    font-size: 30px;
+                }
+                img{
+                    width: 26px;
+                }
+            }
+        }
+    }
+}
+ion-nav[dir="rtl"]{
+    page-document-list .docListComponent .labelHead img{
+        margin-left: 5px;
+        margin-right: 0px;
+    }
+    page-document-list .docListComponent ion-list.docList ion-item img[item-left]{
+        margin-left: 8px;
+        margin-right: 0px;
+    }
+    page-document-list .docListComponent ion-list.docList ion-item span[item-right]{
+        transform: rotate(180deg);
+    }
+    page-document-list .docListComponent ion-list.docList ion-item .item-inner{
+        margin-left: 0px;
+        margin-right: 5px;
+        padding-right: 8px !important;
+        padding-left: 0px !important;
+    }
+    page-document-list .docListComponent .connectDiv{
+        right: 0px;
+    }
+}

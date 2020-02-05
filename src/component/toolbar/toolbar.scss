@@ -1,0 +1,32 @@
+toolbar{    
+    .toolbarMain{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        text-align: center;
+        .segment{
+            width: 25%;
+            font-size: 20px;
+            color: #fff;
+            position: relative;
+            background: none;
+            img{
+                width: 20px;
+            }
+            ion-badge{
+                border-radius: 50%;
+                width: 16px;
+                height: 16px;
+                min-width: auto;
+                padding: 0px;
+                border: 0.55px solid $themeColor1;
+                font-size: 12px;
+                line-height: 15px;
+                vertical-align: text-top;
+                position: absolute;
+                right: 30%;
+            }
+        }
+    }
+}
